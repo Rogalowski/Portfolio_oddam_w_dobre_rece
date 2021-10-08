@@ -13,7 +13,9 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+    </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (Portfolio_oddam_w_dobre_rece)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
@@ -22,6 +24,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/charity_good_hands_app/templates" />
       </list>
     </option>
   </component>

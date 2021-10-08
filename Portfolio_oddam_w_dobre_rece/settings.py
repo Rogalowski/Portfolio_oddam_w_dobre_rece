@@ -57,7 +57,8 @@ ROOT_URLCONF = 'Portfolio_oddam_w_dobre_rece.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'charity_good_hands_app/templates']
+        # 'DIRS': [BASE_DIR / 'charity_good_hands_app/templates']
+        'DIRS': [BASE_DIR / 'templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {

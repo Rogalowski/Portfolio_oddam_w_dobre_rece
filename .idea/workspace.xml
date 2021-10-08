@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5acfe40c-1039-4a30-8435-fd787b9439a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Portfolio_oddam_w_dobre_rece.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Portfolio_oddam_w_dobre_rece.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charity_good_hands_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/charity_good_hands_app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +35,14 @@
     <option name="sortByType" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -78,7 +82,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633681009025</updated>
-      <workItem from="1633681021817" duration="4738000" />
+      <workItem from="1633681021817" duration="5906000" />
     </task>
     <servers />
   </component>

@@ -18,8 +18,10 @@ from django.urls import path
 from django.conf.urls.static import static  # static ROOT import
 from django.conf import settings  # static ROOT import
 
+from charity_good_hands_app.views import HomeView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-] \
-              # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  # static files ROOT
+    path('', HomeView.as_view(), name="home_index"),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  # static files ROOT
 
