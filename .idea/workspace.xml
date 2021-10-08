@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5acfe40c-1039-4a30-8435-fd787b9439a1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/charity_good_hands_app/templates/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/charity_good_hands_app/templates/form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/charity_good_hands_app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/charity_good_hands_app/templates/index.html" afterDir="false" />
@@ -44,7 +45,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -84,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633681009025</updated>
-      <workItem from="1633681021817" duration="8645000" />
+      <workItem from="1633681021817" duration="9029000" />
     </task>
     <servers />
   </component>
