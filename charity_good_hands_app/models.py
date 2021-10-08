@@ -17,13 +17,17 @@ class User(AbstractUser):
 class Category(models.Model):
     name = models.CharField(max_length=64)
 
+    def __str__(self):
+        return self.name
 
 class Institution(models.Model):
     name = models.CharField(max_length=64)
-    description = models.TextField
+    description = models.TextField(default='')
     type = models.IntegerField(choices=INSTITUTION)
     categories = models.ManyToManyField(Category)
 
+    def __str__(self):
+        return self.name
 
 class Donation(models.Model):
     quantity = models.IntegerField()
@@ -34,6 +38,6 @@ class Donation(models.Model):
     zip_code = models.IntegerField()
     pick_up_date = models.DateField(auto_now=True)
     pick_up_time = models.DateTimeField(auto_now=True)
-    pick_up_comment = models.TextField
+    pick_up_comment = models.TextField(default='')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='user_profile')
 
