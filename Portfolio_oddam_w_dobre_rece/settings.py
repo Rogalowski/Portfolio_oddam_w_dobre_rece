@@ -139,5 +139,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"), #static ROOT import
 ]
 
+AUTH_USER_MODEL = "charity_good_hands_app.User"
+
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
