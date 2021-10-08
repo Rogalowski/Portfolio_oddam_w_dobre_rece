@@ -9,11 +9,11 @@ from charity_good_hands_app.models import Donation
 
 class LandingPageView(View):
     def get(self, request):
-        bag = Donation.objects.all().aggregate(Sum('quantity'))['quantity__sum']
+        bag_quantity = Donation.objects.all().aggregate(Sum('quantity'))['quantity__sum']
         institution_quantity = Donation.objects.all().annotate(Sum('institution'))
 
         context = {
-            'bag': bag,
+            'bag_quantity': bag_quantity,
             'institution_quantity': institution_quantity,
         }
         return render(request, 'index.html', context)
