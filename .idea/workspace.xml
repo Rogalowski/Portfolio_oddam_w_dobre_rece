@@ -3,7 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5acfe40c-1039-4a30-8435-fd787b9439a1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/charity_donation.WUaT6A/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/charity_donation.WUaT6A/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/charity_donation.WUaT6A/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/charity_donation.WUaT6A/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b65aa024-33ef-4728-a31a-9ad6cc84666e/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Portfolio_oddam_w_dobre_rece/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charity_good_hands_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/charity_good_hands_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charity_good_hands_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/charity_good_hands_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
