@@ -6,7 +6,6 @@ INSTITUTION = (
     (1, "fundacja"),
     (2, "organizacja pozarządowa"),
     (3, "zbiórka lokalna"),
-    (4, "domyślnie fundacja"),
 )
 
 
@@ -22,7 +21,7 @@ class Category(models.Model):
 class Institution(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField
-    type = models.IntegerField(choices=INSTITUTION)
+    type = models.IntegerField(choices=INSTITUTION, default='fundacja')
     categories = models.ManyToManyField(Category)
 
 
