@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {#<!DOCTYPE html>#}
 {#<html lang="pl">#}
 {#  <head>#}
@@ -9,7 +9,7 @@
 {#    <title>Document</title>#}
 {#    <link rel="stylesheet" href="css/style.css" />#}
 {#  </head>#}
-  <body>
+{#  <body>#}
 {#    <header class="header--main-page">#}
 {#      <nav class="container container--70">#}
 {#        <ul class="nav--actions">#}
@@ -36,6 +36,8 @@
 {#        </div>#}
 {#      </div>#}
 {#    </header>#}
+ {% block section %}
+
 
     <section id="stats" class="stats">
       <div class="container container--85">
@@ -80,16 +82,16 @@
         </div>
       </div>
 
-      <a href="#" class="btn btn--large">Załóż konto</a>
+      <a href="{% url 'register_view' %}" class="btn btn--large">Załóż konto</a>
     </section>
 
     <section id="about-us" class="about-us">
       <div class="about-us--text">
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero optio esse quisquam illo omnis.</p>
-        <img src="images/signature.svg" class="about-us--text-signature" alt="Signature" />
+        <img src="{% static  'images/signature.svg' %}" class="about-us--text-signature" alt="Signature" />
       </div>
-      <div class="about-us--image"><img src="images/about-us.jpg" alt="People in circle" /></div>
+      <div class="about-us--image"><img src="{% static  'images/about-us.jpg' %}" alt="People in circle" /></div>
     </section>
 
      <section id="help" class="help">
@@ -229,7 +231,8 @@
         -->
       </div>
     </section>
-
+     <script src="{% static  'js/app.js' %}"></script>
+ {% endblock section %}
 {#    <footer>#}
 {#      <div id="contact" class="contact">#}
 {#        <h2>Skontaktuj się z nami</h2>#}
@@ -252,6 +255,5 @@
 {#      </div>#}
 {#    </footer>#}
 
-    <script src="js/app.js"></script>
-  </body>
-</html>
+{#  </body>#}
+{#</html>#}

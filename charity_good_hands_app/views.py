@@ -4,9 +4,34 @@ from django.shortcuts import render
 from django.views import View
 
 
-class HomeView(View):
+class LandingPageView(View):
     def get(self, request):
         context = {
 
         }
         return render(request, 'index.html', context)
+
+
+class AddDonationView(View):
+    def get(self, request):
+        context = {
+
+        }
+        return render(request, 'form.html', context)
+
+
+class LoginView(View):
+    def get(self, request):
+        context = {
+
+        }
+        return render(request, 'login.html', context)
+
+
+
+class RegisterView(View):
+    def get(self, request):
+        context = {
+
+        }
+        return render(request, 'register.html', context)
