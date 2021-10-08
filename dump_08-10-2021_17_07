@@ -849,6 +849,9 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.charity_good_hands_app_category (id, name) FROM stdin;
+1	fundacja
+2	organizacja pozarządowa
+3	zbiórka lokalna
 \.
 
 
@@ -857,6 +860,7 @@ COPY public.charity_good_hands_app_category (id, name) FROM stdin;
 --
 
 COPY public.charity_good_hands_app_donation (id, quantity, address, phone_number, zip_code, pick_up_date, pick_up_time, institution_id, user_id) FROM stdin;
+1	11	Kasperski 20	112221333	74	2021-10-08	2021-10-09 17:04:29.842+00	1	1
 \.
 
 
@@ -865,6 +869,7 @@ COPY public.charity_good_hands_app_donation (id, quantity, address, phone_number
 --
 
 COPY public.charity_good_hands_app_donation_categories (id, donation_id, category_id) FROM stdin;
+1	1	1
 \.
 
 
@@ -873,6 +878,9 @@ COPY public.charity_good_hands_app_donation_categories (id, donation_id, categor
 --
 
 COPY public.charity_good_hands_app_institution (id, name, type) FROM stdin;
+1	Malych Stopek	1
+2	WOŚP	2
+3	Swietlica	3
 \.
 
 
@@ -881,6 +889,9 @@ COPY public.charity_good_hands_app_institution (id, name, type) FROM stdin;
 --
 
 COPY public.charity_good_hands_app_institution_categories (id, institution_id, category_id) FROM stdin;
+1	1	1
+2	2	2
+3	3	3
 \.
 
 
@@ -889,6 +900,7 @@ COPY public.charity_good_hands_app_institution_categories (id, institution_id, c
 --
 
 COPY public.charity_good_hands_app_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, year_of_birth) FROM stdin;
+1	admin	\N	t	admin	admin	admin	admin@admin.com	t	t	2021-10-08 17:05:21.022+00	1993
 \.
 
 
@@ -957,6 +969,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 17	admin	0002_logentry_remove_auto_add	2021-10-08 12:23:56.422734+00
 18	admin	0003_logentry_add_action_flag_choices	2021-10-08 12:23:56.433809+00
 19	sessions	0001_initial	2021-10-08 12:23:56.446536+00
+20	charity_good_hands_app	0002_alter_institution_type	2021-10-08 14:55:07.30461+00
 \.
 
 
@@ -1014,7 +1027,7 @@ SELECT pg_catalog.setval('public.charity_good_hands_app_donation_id_seq', 1, fal
 -- Name: charity_good_hands_app_institution_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.charity_good_hands_app_institution_categories_id_seq', 1, false);
+SELECT pg_catalog.setval('public.charity_good_hands_app_institution_categories_id_seq', 3, true);
 
 
 --
@@ -1063,7 +1076,7 @@ SELECT pg_catalog.setval('public.django_content_type_id_seq', 9, true);
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 19, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 20, true);
 
 
 --

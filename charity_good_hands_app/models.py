@@ -6,7 +6,6 @@ INSTITUTION = (
     (1, "fundacja"),
     (2, "organizacja pozarządowa"),
     (3, "zbiórka lokalna"),
-    (4, "domyślnie fundacja"),
 )
 
 

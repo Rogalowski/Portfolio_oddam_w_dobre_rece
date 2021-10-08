@@ -3,11 +3,15 @@ from django.shortcuts import render
 # Create your views here.
 from django.views import View
 
+from charity_good_hands_app.models import Donation
+
 
 class LandingPageView(View):
     def get(self, request):
-        context = {
+        bag = Donation.objects.all()
 
+        context = {
+        'bag': bag,
         }
         return render(request, 'index.html', context)
 
