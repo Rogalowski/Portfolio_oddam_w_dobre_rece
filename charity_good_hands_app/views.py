@@ -25,27 +25,27 @@ class LandingPageView(View):
 
         institution = Institution.objects.filter(type=1)
         organization = Institution.objects.filter(type=2)
-        local_donation = Institution.objects.filter(type=3)
+        local_donator = Institution.objects.filter(type=3)
 
 
         list_institution = []
         list_organization = []
-        list_local_donation = []
+        list_local_donator = []
 
-        while len(list_institution) != 3:
+        while len(list_institution) != len(institution):
             r = random.choice(institution)
             if r not in list_institution:
                 list_institution.append(r)
 
-        while len(list_organization) != 4:
+        while len(list_organization) != len(organization):
             r = random.choice(organization)
             if r not in list_organization:
                 list_organization.append(r)
 
-        while len(list_local_donation) != 2:
-            r = random.choice(local_donation)
-            if r not in list_local_donation:
-                list_local_donation.append(r)
+        while len(list_local_donator) != len(local_donator):
+            r = random.choice(local_donator)
+            if r not in list_local_donator:
+                list_local_donator.append(r)
 
 
         print(list_institution)
@@ -75,7 +75,7 @@ class LandingPageView(View):
             # 'institution3': institution3,
             'list_institution': list_institution,
             'list_organization': list_organization,
-            'list_local_donation': list_local_donation,
+            'list_local_donator': list_local_donator,
         }
         return render(request, 'index.html', context)
 

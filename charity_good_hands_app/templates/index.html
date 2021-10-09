@@ -222,14 +222,14 @@
         <ul class="help--slides-items">
 
 
-            {% for local_donation in list_local_donation %}
+            {% for local_donator in list_local_donator %}
             <li>
             <div class="col">
-              <div class="title">{{ local_donation }}</div>
-              <div class="subtitle">{{ local_donation.description }}</div>
+              <div class="title">{{ local_donator }}</div>
+              <div class="subtitle">{{ local_donator.description }}</div>
             </div>
 
-            <div class="col"><div class="text">{% for category in local_donation.categories.all %} {{ category.name }}, {% endfor %}</div></div>
+            <div class="col"><div class="text">{% for category in local_donator.categories.all %} {{ category.name }}, {% endfor %}</div></div>
           </li>
             {% endfor %}
 
@@ -241,7 +241,7 @@
 {##}
 {#            <div class="col"><div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></div>#}
 {#          </li>#}
-{#        </ul>#}
+        </ul>
 
         <!-- Pagination
         <ul class="help--slides-pagination">
