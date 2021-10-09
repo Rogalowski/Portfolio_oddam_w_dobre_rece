@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {#<!DOCTYPE html>#}
@@ -26,12 +27,14 @@
 {#        </ul>#}
 {#      </nav>#}
 {#    </header>#}
- {% block content %}
+ {% block section %}
 
-
+<h2 class=" html" style="color: red"> {{ wrong_pass }}</h2> <br>
     <section class="login-page">
       <h2>Załóż konto</h2>
-      <form>
+        <form action="" method="POST">
+            {% csrf_token %}
+
         <div class="form-group">
           <input type="text" name="name" placeholder="Imię" />
         </div>
@@ -51,10 +54,15 @@
         <div class="form-group form-group--buttons">
           <a href="{% url 'login_view' %}" class="btn btn--without-border">Zaloguj się</a>
           <button class="btn" type="submit">Załóż konto</button>
+
         </div>
-      </form>
+
+       </form>
+
     </section>
- {% endblock content %}
+
+ {% endblock section %}
+
 {#    <footer>#}
 {#      <div class="contact">#}
 {#        <h2>Skontaktuj się z nami</h2>#}
@@ -91,4 +99,4 @@
 {#      </div>#}
 {#    </footer>#}
 {#  </body>#}
-</html>
+{#</html>#}

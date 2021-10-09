@@ -2,14 +2,16 @@ import random
 
 from random import randint
 
+from django.contrib.auth import logout
+from django.contrib.auth.hashers import make_password
 from django.core.paginator import Paginator
 from django.db.models import Sum
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.views import View
 
-from charity_good_hands_app.models import Donation, Institution
+from charity_good_hands_app.models import Donation, Institution, User
 
 
 class LandingPageView(View):
@@ -81,6 +83,12 @@ class LoginView(View):
         return render(request, 'login.html', context)
 
 
+class LogoutView(View):
+    def get(self, request):
+            logout(request)
+            # return redirect('/')
+            return redirect('home_index')
+
 
 class RegisterView(View):
     def get(self, request):
@@ -88,3 +96,28 @@ class RegisterView(View):
 
         }
         return render(request, 'register.html', context)
+    def post(self, request, *args, **kwargs):
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+
+        if password == password2:
+            password2 = make_password(password)
+        else:
+            wrong_pass = '''PASSWORD NOT THE SAME, PLEASE TRY AGAIN!'''
+            context = {
+                'wrong_pass': wrong_pass
+            }
+            return render(request, 'register.html', context)
+
+        register_user = User.objects.create(
+            username=email,
+            first_name=name,
+            last_name=surname,
+            email=email,
+            password=password2
+        )
+        print('ZAPISANO ', email)
+        return redirect('login_view')
