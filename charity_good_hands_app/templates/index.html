@@ -108,32 +108,45 @@
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.</p>
 
         <ul class="help--slides-items">
-          <li>
+
+    {% for institution in list_institution %}
+           <li>
             <div class="col">
-              <div class="title">{{ institution1.name }}</div>
-              <div class="subtitle">Cel i misja: {{ institution1.description }}</div>
+              <div class="title">{{ institution.name }}</div>
+              <div class="subtitle">Cel i misja: {{ institution.description }}</div>
             </div>
 
-            <div class="col"><div class="text">{% for category in institution1.categories.all %} {{ category.name }}, {% endfor %}</div></div>
+            <div class="col"><div class="text">{% for category in institution.categories.all %} {{ category.name }}, {% endfor %}</div></div>
           </li>
+        {% endfor %}
 
-          <li>
-            <div class="col">
-              <div class="title">{{ institution2.name }} </div>
-              <div class="subtitle">Cel i misja: {{ institution2.description }}</div>
-            </div>
-
-            <div class="col"><div class="text">{% for category in institution2.categories.all %} {{ category.name }}, {% endfor %}</div></div>
-          </li>
-
-          <li>
-            <div class="col">
-              <div class="title">{{ institution3.name }} </div>
-              <div class="subtitle">Cel i misja: {{ institution3.description }}</div>
-            </div>
-
-            <div class="col"><div class="text">{% for category in institution2.categories.all %} {{ category.name }}, {% endfor %}</div></div>
-          </li>
+        
+{#          <li>#}
+{#            <div class="col">#}
+{#              <div class="title">{{ institution1.name }}</div>#}
+{#              <div class="subtitle">Cel i misja: {{ institution1.description }}</div>#}
+{#            </div>#}
+{##}
+{#            <div class="col"><div class="text">{% for category in institution1.categories.all %} {{ category.name }}, {% endfor %}</div></div>#}
+{#          </li>#}
+{##}
+{#          <li>#}
+{#            <div class="col">#}
+{#              <div class="title">{{ institution2.name }} </div>#}
+{#              <div class="subtitle">Cel i misja: {{ institution2.description }}</div>#}
+{#            </div>#}
+{##}
+{#            <div class="col"><div class="text">{% for category in institution2.categories.all %} {{ category.name }}, {% endfor %}</div></div>#}
+{#          </li>#}
+{##}
+{#          <li>#}
+{#            <div class="col">#}
+{#              <div class="title">{{ institution3.name }} </div>#}
+{#              <div class="subtitle">Cel i misja: {{ institution3.description }}</div>#}
+{#            </div>#}
+{##}
+{#            <div class="col"><div class="text">{% for category in institution2.categories.all %} {{ category.name }}, {% endfor %}</div></div>#}
+{#          </li>#}
         </ul>
         <!-- Pagination
         <ul class="help--slides-pagination">

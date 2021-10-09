@@ -39,9 +39,9 @@ class LandingPageView(View):
 
 
 
-        institution1 = list_institution[-1]
-        institution2 = list_institution[-2]
-        institution3 = list_institution[-3]
+        # institution1 = list_institution[1]
+        # institution2 = list_institution[2]
+        # institution3 = list_institution[0]
         # institution3 = random.choice(random1)
         # institution2 = Institution.objects.get(id=list_random_num[-2])
         # institution3 = Institution.objects.get(id=list_random_num[-3])
@@ -55,9 +55,10 @@ class LandingPageView(View):
         context = {
             'bag_quantity': bag_quantity,
             'institution_quantity': institution_quantity,
-            'institution1': institution1,
-            'institution2': institution2,
-            'institution3': institution3,
+            # 'institution1': institution1,
+            # 'institution2': institution2,
+            # 'institution3': institution3,
+            'list_institution': list_institution,
 
 
 
