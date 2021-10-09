@@ -5,6 +5,7 @@ from random import randint
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.db.models import Sum
 from django.shortcuts import render, redirect
@@ -12,7 +13,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.views import View
 
-from charity_good_hands_app.models import Donation, Institution, User
+from charity_good_hands_app.models import Donation, Institution, User, Category
 
 
 class LandingPageView(View):
@@ -68,9 +69,13 @@ class LandingPageView(View):
         return render(request, 'index.html', context)
 
 
-class AddDonationView(View):
+class AddDonationView(LoginRequiredMixin, View):
     def get(self, request):
+
+        categories = Category.objects.all()
+
         context = {
+            'categories': categories
 
         }
         return render(request, 'form.html', context)
@@ -119,16 +124,21 @@ class RegisterView(View):
 
         if password == password2:
             password2 = make_password(password)
+
         else:
 
             messages.add_message(request, messages.INFO, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
             return render(request, 'register.html')
-
-        register_user = User.objects.create(
+        try:
+            register_user = User.objects.create(
             username=email,
             first_name=name,
             last_name=surname,
             email=email,
-            password=password2
-        )
+            password=password2,
+            )
+        except:
+            messages.add_message(request, messages.INFO, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
+            return render(request, 'register.html')
+
         return redirect('login_view')

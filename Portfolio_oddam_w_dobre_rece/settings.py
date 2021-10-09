@@ -141,5 +141,6 @@ STATICFILES_DIRS = [
 
 AUTH_USER_MODEL = "charity_good_hands_app.User"
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'login_view'
+LOGIN_REDIRECT_URL = 'add_donation_view'
+LOGOUT_REDIRECT_URL = 'home_index'
