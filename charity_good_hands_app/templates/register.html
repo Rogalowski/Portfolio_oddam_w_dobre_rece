@@ -27,9 +27,15 @@
 {#        </ul>#}
 {#      </nav>#}
 {#    </header>#}
- {% block section %}
 
-<h2 class=" html" style="color: red"> {{ wrong_pass }}</h2> <br>
+
+ {% block section %}
+{% if messages %}
+<h2 class="messages html" style="color: red">
+    {% for message in messages %}  {{ message }}   {% endfor %}
+</h2>
+{% endif %}
+
     <section class="login-page">
       <h2>Załóż konto</h2>
         <form action="" method="POST">

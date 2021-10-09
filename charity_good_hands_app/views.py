@@ -2,6 +2,7 @@ import random
 
 from random import randint
 
+from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.hashers import make_password
 from django.core.paginator import Paginator
@@ -92,11 +93,11 @@ class LoginView(View):
             login(request, user)
             return redirect('home_index')
         else:
-            wrong_passes = f"Wrong login or password! Try again!"
-            context = {
-                'wrong_passes': wrong_passes,
-            }
-            return render(request, 'login.html', context)
+            # MESSAGE AFTER DELETE ROOM FROM DATABASE IN MAIN MENU
+            messages.add_message(request, messages.INFO, f'User not exist! Please register!')
+            return redirect('register_view')
+            # return render(request, 'register.html', context)
+
 
 class LogoutView(View):
     def get(self, request):
@@ -121,11 +122,9 @@ class RegisterView(View):
         if password == password2:
             password2 = make_password(password)
         else:
-            wrong_pass = '''PASSWORD NOT THE SAME, PLEASE TRY AGAIN!'''
-            context = {
-                'wrong_pass': wrong_pass
-            }
-            return render(request, 'register.html', context)
+            
+            messages.add_message(request, messages.INFO, f'PASSWORD NOT THE SAME, PLEASE TRY AGAIN!')
+            return redirect('register_view')
 
         register_user = User.objects.create(
             username=email,
