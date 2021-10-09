@@ -2,7 +2,7 @@ import random
 
 from random import randint
 
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.hashers import make_password
 from django.core.paginator import Paginator
 from django.db.models import Sum
@@ -81,7 +81,22 @@ class LoginView(View):
 
         }
         return render(request, 'login.html', context)
+    def post(self, request, *args, **kwargs):
 
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(username=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home_index')
+        else:
+            wrong_passes = f"Wrong login or password! Try again!"
+            context = {
+                'wrong_passes': wrong_passes,
+            }
+            return render(request, 'login.html', context)
 
 class LogoutView(View):
     def get(self, request):
@@ -119,5 +134,4 @@ class RegisterView(View):
             email=email,
             password=password2
         )
-        print('ZAPISANO ', email)
         return redirect('login_view')
