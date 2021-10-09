@@ -253,3 +253,49 @@ document.addEventListener("DOMContentLoaded", function() {
     new FormSteps(form);
   }
 });
+
+
+
+
+
+
+
+const institution = document.querySelectorAll('div.form-group--checkbox');
+
+
+function hideAll() {
+    institution[0].style.display = 'none';
+    institution[1].style.display = 'none';
+    institution[2].style.display = 'none';
+    institution[3].style.display = 'none';
+    institution[4].style.display = 'none';
+}
+
+document.querySelector('div.form-group--checkbox label').addEventListener('click', (event) => {
+// document.querySelector('input[type=checkbox]').addEventListener('click', (event) => {
+// document.querySelector('input[type=checkbox]').addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+    const selectedValue = document.querySelector("input").value;
+    // const selectedValue = document.getElementsByName('categories').value;
+    // const selectedValue = document.querySelector('input').value;
+
+    if (selectedValue === '1') {
+        hideAll();
+        institution[0].style.display = 'block';
+    } else if (selectedValue === '2') {
+        hideAll();
+        institution[1].style.display = 'block';
+    } else if (selectedValue === '3') {
+        hideAll();
+        institution[2].style.display = 'block';
+    } else if (selectedValue === '4') {
+        hideAll();
+        institution[3].style.display = 'block';
+    } else {
+        hideAll();
+        institution[4].style.display = 'block';
+    }
+
+})
