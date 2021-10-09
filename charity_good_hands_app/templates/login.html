@@ -26,8 +26,8 @@
 {#        </ul>#}
 {#      </nav>#}
 {#    </header>#}
-{% block section %}
-<h2 class=" html" style="color: red"> {{ wrong_passes }}</h2> <br>
+{% block content %}
+
     <section class="login-page">
       <h2>Zaloguj się</h2>
 
@@ -44,12 +44,13 @@
 
         <div class="form-group form-group--buttons">
           <a href="{% url 'register_view' %}" class="btn btn--without-border">Załóż konto</a>
-          <button class="btn" type="submit">Zaloguj się</button> 
+          <button class="btn" type="submit">Zaloguj się</button>
         </div>
       </form>
     </section>
 
-{% endblock section %}
+{% endblock content %}
+
 {#    <footer>#}
 {#        <div class="contact">#}
 {#          <h2>Skontaktuj się z nami</h2>#}

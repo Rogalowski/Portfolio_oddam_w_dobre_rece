@@ -29,14 +29,14 @@
 {#    </header>#}
 
 
- {% block section %}
-{% if messages %}
-<h2 class="messages html" style="color: red">
-    {% for message in messages %}  {{ message }}   {% endfor %}
-</h2>
-{% endif %}
+
+
+
+ {% block content %}
+
 
     <section class="login-page">
+
       <h2>Załóż konto</h2>
         <form action="" method="POST">
             {% csrf_token %}
@@ -64,10 +64,14 @@
         </div>
 
        </form>
-
+        {% if messages %}
+ <h2 style="color: red">
+    {% for message in messages %}  {{ message }}   {% endfor %}
+</h2>
+{% endif %}
     </section>
 
- {% endblock section %}
+{% endblock content %}
 
 {#    <footer>#}
 {#      <div class="contact">#}

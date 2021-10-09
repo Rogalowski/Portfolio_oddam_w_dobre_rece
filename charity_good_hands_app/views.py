@@ -94,7 +94,7 @@ class LoginView(View):
             return redirect('home_index')
         else:
             # MESSAGE AFTER DELETE ROOM FROM DATABASE IN MAIN MENU
-            messages.add_message(request, messages.INFO, f'User not exist! Please register!')
+            messages.add_message(request, messages.INFO, f'Użytkownik nie istnieje, zarejestruj się!')
             return redirect('register_view')
             # return render(request, 'register.html', context)
 
@@ -108,10 +108,8 @@ class LogoutView(View):
 
 class RegisterView(View):
     def get(self, request):
-        context = {
+        return render(request, 'register.html')
 
-        }
-        return render(request, 'register.html', context)
     def post(self, request, *args, **kwargs):
         name = request.POST.get('name')
         surname = request.POST.get('surname')
@@ -122,9 +120,9 @@ class RegisterView(View):
         if password == password2:
             password2 = make_password(password)
         else:
-            
-            messages.add_message(request, messages.INFO, f'PASSWORD NOT THE SAME, PLEASE TRY AGAIN!')
-            return redirect('register_view')
+
+            messages.add_message(request, messages.INFO, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
+            return render(request, 'register.html')
 
         register_user = User.objects.create(
             username=email,
