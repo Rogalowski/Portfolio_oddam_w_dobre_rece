@@ -68,6 +68,9 @@ class LandingPageView(View):
         }
         return render(request, 'index.html', context)
 
+class FormConfirmationView(View):
+    def get(self, request):
+        return render(request, 'form-confirmation.html')
 
 class AddDonationView(LoginRequiredMixin, View):
     def get(self, request):
@@ -81,6 +84,46 @@ class AddDonationView(LoginRequiredMixin, View):
 
         }
         return render(request, 'form.html', context)
+
+    def post(self, request):
+        logged_user = User.objects.get(username=request.user.username)
+
+        quantity = request.POST.get('bags')
+        institution = request.POST.get('organization')
+
+        address = request.POST.get('address')
+        city = request.POST.get('city')
+        zip_code = request.POST.get('postcode')
+        phone_number = request.POST.get('phone')
+        pick_up_date = request.POST.get('data')
+        pick_up_time = request.POST.get('time')
+        pick_up_comment = request.POST.get('more_info')
+        categories = request.POST.getlist('categories')
+        print("Categories: ", categories)
+        try:
+            new_donation = Donation.objects.create(
+                   quantity=quantity,
+                   institution_id=institution,
+                   city=city,
+                   zip_code=zip_code,
+                   address=address,
+                   phone_number=phone_number,
+                   pick_up_date=pick_up_date,
+                   pick_up_time=pick_up_time,
+                   pick_up_comment=pick_up_comment,
+                   user_id=logged_user.pk,
+               )
+            new_donation.categories.set(categories)
+
+        except:
+            messages.add_message(request, messages.INFO, f'Ups, coś poszło nie tak')
+            return redirect('register_view')
+        
+        return redirect('form_confirmation')
+            # return render(request, 'register.html', context)
+
+
+
 
 
 class LoginView(View):
@@ -126,11 +169,10 @@ class RegisterView(View):
 
         if password == password2:
             password2 = make_password(password)
-
         else:
-
             messages.add_message(request, messages.INFO, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
             return render(request, 'register.html')
+
         try:
             register_user = User.objects.create(
             username=email,
@@ -142,5 +184,4 @@ class RegisterView(View):
         except:
             messages.add_message(request, messages.INFO, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
             return render(request, 'register.html')
-
         return redirect('login_view')

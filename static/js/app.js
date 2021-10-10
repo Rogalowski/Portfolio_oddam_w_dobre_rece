@@ -252,16 +252,14 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
-});
 
+  // ####################################################################################
+// ##########################HIDDING INSTITUTIONS#######################################
 
-
-
-
-
-
-const institution = document.querySelectorAll('div.form-group--checkbox');
-
+const institution = document.querySelectorAll("div.form-group.form-group--checkbox.radio");
+// const institution = document.querySelectorAll("input[type=radio]");
+// const institution = document.querySelectorAll("input[type=radio]");
+console.log(institution)
 
 function hideAll() {
     institution[0].style.display = 'none';
@@ -270,17 +268,22 @@ function hideAll() {
     institution[3].style.display = 'none';
     institution[4].style.display = 'none';
 }
+// document.querySelectorAll('input[type=checkbox]').forEach(element =>{
+//   element.addEventListener('click', (event) => {
 
-document.querySelector('div.form-group--checkbox label').addEventListener('click', (event) => {
-// document.querySelector('input[type=checkbox]').addEventListener('click', (event) => {
-// document.querySelector('input[type=checkbox]').addEventListener('click', (event) => {
+// document.querySelector("[data-step='1']").addEventListener('click', (event) => {
+document.querySelector('div.form-group.form-group--checkbox').addEventListener('click', (event) => {
 
+// document.querySelector('input[type=checkbox]').addEventListener('click', (event) => {
+console.log(event)
     event.preventDefault();
 
-    const selectedValue = document.querySelector("input").value;
+    // const selectedValue = document.querySelector("input").value;
     // const selectedValue = document.getElementsByName('categories').value;
-    // const selectedValue = document.querySelector('input').value;
-
+    // const selectedValue = document.querySelector('input[type=checkbox]').value;
+    const selectedValue = document.querySelector('div.form-group.form-group--checkbox.radio label input[value]').value;
+console.log("1")
+console.log(selectedValue)
     if (selectedValue === '1') {
         hideAll();
         institution[0].style.display = 'block';
@@ -299,3 +302,73 @@ document.querySelector('div.form-group--checkbox label').addEventListener('click
     }
 
 })
+
+
+
+// })
+
+
+
+
+
+  // /**
+  //  * Hide elements when clicked on document
+  //  */
+  // document.addEventListener("click", function(e) {
+  //   const target = e.target;
+  //   const tagName = target.tagName;
+  //
+  //   if (target.classList.contains("dropdown")) return false;
+  //
+  //   if (tagName === "LI" && target.parentElement.parentElement.classList.contains("dropdown")) {
+  //     return false;
+  //   }
+  //
+  //   if (tagName === "DIV" && target.parentElement.classList.contains("dropdown")) {
+  //     return false;
+  //   }
+  //
+  //   document.querySelectorAll(".form-group--dropdown .dropdown").forEach(el => {
+  //     el.classList.remove("selecting");
+  //   });
+  // });
+
+
+
+
+
+
+
+
+
+
+  // ####################################################################################
+// ##########################SUMMARY#######################################
+
+document.querySelector("button .btn.next-step").addEventListener('click', (event) => {
+
+    event.preventDefault();
+
+const providedBags = document.querySelector("input[name='bags']").value
+
+
+     const newRow = document.createElement('tr');
+
+    const orderTd = document.createElement('td');
+    orderTd.innerText = orderId;
+  newRow.appendChild(orderTd);
+  document.querySelector('span .summary--text').appendChild(newRow);
+  document.querySelector('span .summary--text').innerText(providedBags)
+
+
+})
+
+
+
+});
+
+
+
+
+
+

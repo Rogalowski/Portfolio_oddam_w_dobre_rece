@@ -18,12 +18,14 @@ from django.urls import path
 from django.conf.urls.static import static  # static ROOT import
 from django.conf import settings  # static ROOT import
 
-from charity_good_hands_app.views import LandingPageView, AddDonationView, LoginView, RegisterView, LogoutView
+from charity_good_hands_app.views import LandingPageView, AddDonationView, LoginView, RegisterView, LogoutView, \
+    FormConfirmationView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', LandingPageView.as_view(), name="home_index"),
     path('add_donation/', AddDonationView.as_view(), name="add_donation_view"),
+    path('form_confirmation/', FormConfirmationView.as_view(), name="form_confirmation"),
     path('login/', LoginView.as_view(), name="login_view"),
     path('logout/', LogoutView.as_view(), name="logout_view"),
     path('register/', RegisterView.as_view(), name="register_view"),

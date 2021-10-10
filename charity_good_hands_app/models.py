@@ -35,6 +35,7 @@ class Donation(models.Model):
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     address = models.CharField(max_length=128)
     phone_number = models.IntegerField()
+    city = models.CharField(max_length=128)
     zip_code = models.IntegerField()
     pick_up_date = models.DateField(auto_now=True)
     pick_up_time = models.DateTimeField(auto_now=True)
