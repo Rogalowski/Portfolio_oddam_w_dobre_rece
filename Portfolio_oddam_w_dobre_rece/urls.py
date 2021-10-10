@@ -22,7 +22,7 @@ from charity_good_hands_app.views import LandingPageView, AddDonationView, Login
     FormConfirmationView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name="admin_panel"),
     path('', LandingPageView.as_view(), name="home_index"),
     path('add_donation/', AddDonationView.as_view(), name="add_donation_view"),
     path('form_confirmation/', FormConfirmationView.as_view(), name="form_confirmation"),

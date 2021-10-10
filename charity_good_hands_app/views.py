@@ -118,7 +118,7 @@ class AddDonationView(LoginRequiredMixin, View):
         except:
             messages.add_message(request, messages.INFO, f'Ups, coś poszło nie tak')
             return redirect('register_view')
-        
+
         return redirect('form_confirmation')
             # return render(request, 'register.html', context)
 
