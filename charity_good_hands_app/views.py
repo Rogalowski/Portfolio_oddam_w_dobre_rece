@@ -190,9 +190,11 @@ class RegisterView(View):
 class UserDetailsView(LoginRequiredMixin, View):
     def get(self, request):
         logged_user = User.objects.get(username=request.user.username)
+        donations = Donation.objects.filter(user=logged_user).order_by('-pick_up_date').order_by('-pick_up_time')
 
         context = {
             'logged_user': logged_user,
+            'donations': donations,
         }
         return render(request, 'auth/user_details_view.html', context)
 
