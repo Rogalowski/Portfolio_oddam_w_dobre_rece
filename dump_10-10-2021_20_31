@@ -857,6 +857,7 @@ COPY public.charity_good_hands_app_category (id, name) FROM stdin;
 1	ubrania, które nadają się do ponownego użycia
 4	książki
 5	inne
+6	test
 \.
 
 
@@ -874,11 +875,11 @@ COPY public.charity_good_hands_app_donation (id, quantity, address, phone_number
 9	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:18:48.278091+00	1	2	sdsdvs	sdfsd
 10	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:19:12.587781+00	1	2	sdsdvs	sdfsd
 11	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:19:35.499093+00	1	2	sdsdvs	sdfsd
-12	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:20:45.262389+00	1	2	sdsdvs	sdfsd
 13	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:21:27.940345+00	1	2	sdsdvs	sdfsd
 14	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:21:55.076362+00	1	2	sdsdvs	sdfsd
 15	11	werwe	234234	324234	2021-10-10	2021-10-10 15:24:36.676095+00	1	2	dfds	few
 16	11	werwe	234234	324234	2021-10-10	2021-10-10 15:27:25.232152+00	1	2	dfds	few
+12	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 18:00:04.9607+00	1	2	sdsdvs	sdfsd
 \.
 
 
@@ -894,6 +895,8 @@ COPY public.charity_good_hands_app_donation_categories (id, donation_id, categor
 5	16	1
 6	16	2
 7	16	3
+8	12	4
+9	12	5
 \.
 
 
@@ -925,6 +928,7 @@ COPY public.charity_good_hands_app_institution (id, name, type, description) FRO
 8	Wsparcie i Pomoc Pokolenia 	2	Wszyscy zainteresowani , społeczność lokalna , rodzina , dzieci, młodzież , kobiety , samotne matki (ojcowie) , osoby uzależnione od alkoholu , osoby uzależnione od narkotyków , ofiary przemocy, przestępstw, osoby w kryzysie , osoby w kryzysie bezdomności , osoby skrajnie ubogie , osoby starsze, kombatanci , więźniowie, byli więźniowie 
 9	"ONI" to MY !!!	2	Wsparcie I Pomoc Pokolenia NASZEGO POKOLENIA! dla SENIORÓW
 10	Stowarzyszenie Bezpieczna i Przyjazna Kolej 	2	ekologia 
+24	Jacek	3	asdasd
 \.
 
 
@@ -991,9 +995,10 @@ COPY public.charity_good_hands_app_user (id, password, last_login, is_superuser,
 3	pbkdf2_sha256$260000$rsJSzcHKQTpHi22vO8FBVz$RvWL9qrPXDEldpVZAXiSIYRjNsUqosGE5H5owAIKkGE=	\N	f	dsv@o2.pl	cds		dsv@o2.pl	f	t	2021-10-09 11:47:05.909809+00	\N
 6	pbkdf2_sha256$260000$3rxQ4wXP0m7OPIuneATPvm$4pjvBaYozssCP0NOR2UE0wMukuUPPppmfw7LLGTeMEo=	\N	f	sdfs@asdas.com	sd	sdf	sdfs@asdas.com	f	t	2021-10-09 12:10:50.872485+00	\N
 7	pbkdf2_sha256$260000$CKFHqdcs4ipJwO0DUrRDAa$OLVpj9T3DocUZK2tG8Lf/T6JtA6kvpd73xlSfROJe0w=	2021-10-09 12:38:28.605398+00	f	aaaa@aaa.com	aa	aa	aaaa@aaa.com	f	t	2021-10-09 12:38:19.313199+00	\N
+23	pbkdf2_sha256$260000$deIJtSNHBiFunZOsqLtbAn$ombQMFJ7FnEVGy5Z+mVtjbeNE0sXt8jUlxarkc/mi38=	2021-10-10 17:52:55.734461+00	t	it_jacek@jacek.com	it_jacek	it_jacek	it_jacek@jacek.com	t	t	2021-10-10 17:50:56+00	4
 8	pbkdf2_sha256$260000$E9gebZy9B6ogl1ObZiULj4$Z+vSynSLqfognbnuw+3ktgjdgo5EMZdPbqf3Wwyb00Q=	2021-10-09 15:59:04.49013+00	f					f	t	2021-10-09 15:59:00.646787+00	\N
-2	pbkdf2_sha256$260000$VWq4yh9JfPR0XVWrQ3GhXN$JfwPUmXPUcVhZMnTlB0gDQcNOnFVOkJU0Lx4RlyVL8Q=	2021-10-09 19:11:29.050212+00	f	jacek@jacek.com	Jacek	Rogowski	jacek@jacek.com	f	t	2021-10-09 11:46:28.781125+00	\N
-21	pbkdf2_sha256$260000$2TCAkuYz5iEyhPrPaab9Ge$df6VdeRbxEZKelWKOIw0lY0g6cC2923Q3ONmbItjGwM=	2021-10-10 15:40:25.12828+00	t	root			root@root.com	t	t	2021-10-10 15:40:04.764533+00	\N
+21	pbkdf2_sha256$260000$2TCAkuYz5iEyhPrPaab9Ge$df6VdeRbxEZKelWKOIw0lY0g6cC2923Q3ONmbItjGwM=	2021-10-10 18:30:03.641798+00	t	root@root.com	Root		root@root.com	t	t	2021-10-10 15:40:04.764533+00	\N
+2	pbkdf2_sha256$260000$VWq4yh9JfPR0XVWrQ3GhXN$JfwPUmXPUcVhZMnTlB0gDQcNOnFVOkJU0Lx4RlyVL8Q=	2021-10-10 15:57:25.40205+00	f	jacek@jacek.com	Jacek	Rogowski	jacek@jacek.com	f	t	2021-10-09 11:46:28.781125+00	\N
 \.
 
 
@@ -1018,6 +1023,21 @@ COPY public.charity_good_hands_app_user_user_permissions (id, user_id, permissio
 --
 
 COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+1	2021-10-10 17:47:52.043885+00	22	it_jacek@jacek.com	1	[{"added": {}}]	6	21
+2	2021-10-10 17:49:23.349653+00	22	itjacek@jacek.com	2	[{"changed": {"fields": ["Username", "First name", "Email address"]}}]	6	21
+3	2021-10-10 17:50:30.926935+00	22	itjacek@jacek.com	2	[{"changed": {"fields": ["Password"]}}]	6	21
+4	2021-10-10 17:50:52.451588+00	22	itjacek@jacek.com	3		6	21
+5	2021-10-10 17:51:37.205448+00	23	it_jacek	1	[{"added": {}}]	6	21
+6	2021-10-10 17:51:46.544705+00	23	it_jacek@jacek.com	2	[{"changed": {"fields": ["Username"]}}]	6	21
+7	2021-10-10 17:52:46.423765+00	23	it_jacek@jacek.com	2	[{"changed": {"fields": ["Staff status"]}}]	6	21
+8	2021-10-10 17:55:46.200886+00	24	Jacek	1	[{"added": {}}]	8	23
+9	2021-10-10 17:55:54.225908+00	24	Jacek	2	[{"changed": {"fields": ["Categories"]}}]	8	23
+10	2021-10-10 17:57:02.131113+00	24	Jacek	2	[{"changed": {"fields": ["Categories"]}}]	8	23
+11	2021-10-10 17:57:36.002787+00	24	Jacek	2	[{"changed": {"fields": ["Categories"]}}]	8	23
+12	2021-10-10 17:58:44.261913+00	24	Jacek	2	[{"changed": {"fields": ["Categories"]}}]	8	23
+13	2021-10-10 17:59:20.984231+00	6	test	1	[{"added": {}}]	7	23
+14	2021-10-10 17:59:24.548606+00	24	Jacek	2	[{"changed": {"fields": ["Categories"]}}]	8	23
+15	2021-10-10 18:00:04.974849+00	12	Donation object (12)	2	[{"changed": {"fields": ["Categories"]}}]	9	23
 \.
 
 
@@ -1073,7 +1093,7 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 --
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
-1g2lj43xd5hhbqqdfhy44410mnsmsz4e	.eJxVjEEOwiAQRe_C2pAZpBRcuu8ZCDMDUjVtUtqV8e7apAvd_vfef6mYtrXGreUljqIuyqA6_Y6U-JGnncg9TbdZ8zyty0h6V_RBmx5myc_r4f4d1NTqtwYmn73prWNw5AzbQglBzlCKYys5kCfswTtCtNB1FotkBCMhBQ5WvT8KvTf0:1mZaw5:rGBfaTEaVhPnY9_E35m2qwKDB1ru2SHjSlKPs17gD6Q	2021-10-24 15:40:25.131999+00
+otldb580f4d51vx6t0kb09jx5gwcvtk1	.eJxVjEEOwiAQRe_C2pAZpBRcuu8ZCDMDUjVtUtqV8e7apAvd_vfef6mYtrXGreUljqIuyqA6_Y6U-JGnncg9TbdZ8zyty0h6V_RBmx5myc_r4f4d1NTqtwYmn73prWNw5AzbQglBzlCKYys5kCfswTtCtNB1FotkBCMhBQ5WvT8KvTf0:1mZdaF:A8t9INOlyUFqFtSXNgNvkIVBWRbhKeJbIqtiJAxEuaE	2021-10-24 18:30:03.643734+00
 \.
 
 
@@ -1102,14 +1122,14 @@ SELECT pg_catalog.setval('public.auth_permission_id_seq', 36, true);
 -- Name: charity_good_hands_app_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.charity_good_hands_app_category_id_seq', 1, false);
+SELECT pg_catalog.setval('public.charity_good_hands_app_category_id_seq', 6, true);
 
 
 --
 -- Name: charity_good_hands_app_donation_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.charity_good_hands_app_donation_categories_id_seq', 7, true);
+SELECT pg_catalog.setval('public.charity_good_hands_app_donation_categories_id_seq', 9, true);
 
 
 --
@@ -1123,14 +1143,14 @@ SELECT pg_catalog.setval('public.charity_good_hands_app_donation_id_seq', 16, tr
 -- Name: charity_good_hands_app_institution_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.charity_good_hands_app_institution_categories_id_seq', 3, true);
+SELECT pg_catalog.setval('public.charity_good_hands_app_institution_categories_id_seq', 11, true);
 
 
 --
 -- Name: charity_good_hands_app_institution_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.charity_good_hands_app_institution_id_seq', 1, false);
+SELECT pg_catalog.setval('public.charity_good_hands_app_institution_id_seq', 24, true);
 
 
 --
@@ -1144,7 +1164,7 @@ SELECT pg_catalog.setval('public.charity_good_hands_app_user_groups_id_seq', 1, 
 -- Name: charity_good_hands_app_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.charity_good_hands_app_user_id_seq', 21, true);
+SELECT pg_catalog.setval('public.charity_good_hands_app_user_id_seq', 23, true);
 
 
 --
@@ -1158,7 +1178,7 @@ SELECT pg_catalog.setval('public.charity_good_hands_app_user_user_permissions_id
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, false);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 15, true);
 
 
 --

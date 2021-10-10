@@ -185,3 +185,15 @@ class RegisterView(View):
             messages.add_message(request, messages.INFO, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
             return render(request, 'register.html')
         return redirect('login_view')
+
+
+class UserDetailsView(LoginRequiredMixin, View):
+    def get(self, request):
+        logged_user = User.objects.get(username=request.user.username)
+
+        context = {
+            'logged_user': logged_user,
+        }
+        return render(request, 'auth/user_details_view.html', context)
+
+
