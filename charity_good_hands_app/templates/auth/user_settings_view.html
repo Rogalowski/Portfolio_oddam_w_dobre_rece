@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+
+
+    <section class="login-page">
+
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+
+        <div class="steps--item">
+
+  <h2>Zmień ustawienia </h2>
+
+       <h3>Imię: <input type="text" name="name" placeholder="{{ logged_user.first_name }} " /> </h3>
+
+
+       <h3> Nazwisko:    <input type="text" name="surname" placeholder="{{ logged_user.last_name }}" /> </h3>
+
+
+        <h3> Email: <input type="email" name="email" placeholder="{{ logged_user.email }}  " />     </h3>
+
+
+         <h3> Rok urodzenia:  <input type="number" name="year" placeholder="{{ logged_user.year_of_birth }}" />      </h3>
+
+
+       <h3>   <input type="password" name="password_old" placeholder="Stare hasło" /> </h3>
+
+<h3>
+          <input type="password" name="password" placeholder="Nowe hasło" />
+
+
+          <input type="password" name="password2" placeholder="Powtórz nowe hasło" />
+
+</h3>
+
+
+{##}
+{#        <div class="form-group form-group--buttons">#}
+{#          <a href="{% url 'login_view' %}" class="btn btn--without-border">Zaloguj się</a>#}
+{#          <button class="btn" type="submit">Załóż konto</button>#}
+{#    </div>#}
+            <h3>
+            <button class="btn" type="submit">Zmień ustawienia</button>
+
+</h3>
+       </div>
+
+       </form>
+        {% if messages %}
+ <h2 style="color: red">
+    {% for message in messages %}  {{ message }}   {% endfor %}
+</h2>
+{% endif %}
+
+    </section>
+
+
+
+
+ <h2><a class="btn btn--small btn--without-border" href="{{request.META.HTTP_REFERER}}">Go back</a>  </h2>
+
+
+{% endblock content %}
+

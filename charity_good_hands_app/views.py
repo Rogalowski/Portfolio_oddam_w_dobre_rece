@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.db.models import Sum
 from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import check_password
 
 # Create your views here.
 from django.views import View
@@ -198,4 +199,72 @@ class UserDetailsView(LoginRequiredMixin, View):
         }
         return render(request, 'auth/user_details_view.html', context)
 
+
+class UserSettingsEditView(LoginRequiredMixin, View):
+    def get(self, request):
+
+        logged_user = User.objects.get(username=request.user.username)
+
+        context = {
+            'logged_user': logged_user,
+        }
+        return render(request, 'auth/user_settings_view.html', context)
+
+
+    def post(self, request, *args, **kwargs):
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        email = request.POST.get('email')
+        year = request.POST.get('year')
+        password_old = request.POST.get('password_old')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+
+        logged_user = User.objects.get(username=request.user.username)
+
+        if logged_user.check_password(password_old):
+
+
+            if password == password2:
+            # if check_password(password2, password):
+                password2 = make_password(password)
+
+            else:
+                messages.add_message(request, messages.INFO, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
+                return redirect('user_settings')
+            print("Hura")
+
+
+
+            try:
+
+                user_update = User.objects.get(username=logged_user)
+                if email != "":
+                    user_update.username = email
+                if name != "":
+                    user_update.first_name = name
+                if surname != "":
+                    user_update.last_name = surname
+                if email != "":
+                    user_update.email = email
+                if year != "":
+                    user_update.year_of_birth = year
+                if " " in password:
+                    user_update.save()
+                    messages.add_message(request, messages.INFO,
+                                         f'Podane hasło zawiera spację i nie zostało zmienione')
+                    return redirect('user_settings')
+                else:
+                    user_update.password = password2
+
+                user_update.save()
+            except:
+                messages.add_message(request, messages.INFO, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
+                # return render(request, 'register.html')
+                return redirect('user_settings')
+            return redirect('login_view')
+
+        else:
+            messages.add_message(request, messages.INFO, f'Podane stare hasło nie pasuje, spróbuj jeszcze raz!')
+            return redirect('user_settings')
 
