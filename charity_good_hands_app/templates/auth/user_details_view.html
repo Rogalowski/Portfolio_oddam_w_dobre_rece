@@ -19,49 +19,95 @@
 
 
 	<style>
-		table {
+table {
 			border:1px solid #b3adad;
 			border-collapse:collapse;
 			padding:5px;
 		}
-		table th {
+
+table th {
 			border:1px solid #b3adad;
 			padding:5px;
 			background: #f0f0f0;
 			color: #313030;
 		}
-		table td {
+
+table td {
 			border:1px solid #b3adad;
 			text-align:center;
 			padding:5px;
 			background: #ffffff;
 			color: #313030;
 		}
+.taken {
+			color: #afabab;
+			background: #ffffff;
+		}
 	</style>
+
+
 
            <h3>
 	<table>
 		<thead>
 			<tr>
+
 				<th>Instytucja: </th>
 				<th>Ilość zabranych worków: </th>
 				<th>Data zabrania: </th>
+				<th>Zabrane: </th>
 				<th>Kategorie: </th>
+
 			</tr>
 		</thead>
-		<tbody>
+
+
+
+
+
+
+
 
         {% for donation in donations %}
+
+
+		<tbody>
 			<tr>
-				<td>{{ donation.institution }}</td>
-				<td>{{ donation.quantity }}</td>
-				<td>{{ donation.pick_up_date }} </td>
-				<td>{% for category in donation.categories.all %} {{ category.name }}, {% endfor %} </td>
+
+
+
+		{% if donation.is_taken %}	<td class="taken"> {% else %} <td>  {%  endif %} {{ donation.institution }}</td>
+		{% if donation.is_taken %}	<td class="taken"> {% else %} <td>  {%  endif %} {{ donation.quantity }}</td>
+		{% if donation.is_taken %}	<td class="taken"> {% else %} <td>  {%  endif %} {{ donation.pick_up_date }} </td>
+			{% if donation.is_taken %}
+				<td class="taken"> TAK </td>
+				{% else %}
+
+
+				 <form action="{% url 'taken_donation' donation.id %}" method="POST">
+     {% csrf_token %}
+					 <td>
+       NIE   <button  type="submit">Zabrany</button>
+</td>
+      </form>
+
+             {% endif %}
+
+{% if donation.is_taken %}	<td class="taken"> {% else %} <td>  {%  endif %}
+					{% for category in donation.categories.all %}
+						{{ category.name }},
+					{% endfor %}
+				</td>
+
+</p>
 			</tr>
+
+</tbody>
        {% endfor %}
 
 
-		</tbody>
+
+
 	</table>
 </h3>
 

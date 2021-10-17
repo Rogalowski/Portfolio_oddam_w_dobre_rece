@@ -1,5 +1,5 @@
 import random
-
+import datetime
 from random import randint
 
 from django.contrib import messages
@@ -191,7 +191,7 @@ class RegisterView(View):
 class UserDetailsView(LoginRequiredMixin, View):
     def get(self, request):
         logged_user = User.objects.get(username=request.user.username)
-        donations = Donation.objects.filter(user=logged_user).order_by('-pick_up_date').order_by('-pick_up_time')
+        donations = Donation.objects.filter(user=logged_user).order_by('-pick_up_date').order_by('-pick_up_time').order_by('is_taken')
 
         context = {
             'logged_user': logged_user,
@@ -267,4 +267,11 @@ class UserSettingsEditView(LoginRequiredMixin, View):
         else:
             messages.add_message(request, messages.INFO, f'Podane stare hasło nie pasuje, spróbuj jeszcze raz!')
             return redirect('user_settings')
+
+class TakenDonationButton(LoginRequiredMixin, View):
+    def post(self, request, id):
+        donation = Donation.objects.get(id=id)
+        donation.is_taken = True
+        donation.save()
+        return redirect('user_profile')
 
