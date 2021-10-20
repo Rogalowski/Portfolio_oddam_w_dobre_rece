@@ -245,34 +245,55 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // TODO: get data from inputs and show them in summary
       const buttonNext = document.querySelectorAll("button.btn.next-step")
-      const summaryBlock = document.querySelector('div.summary')
-      // const buttonsNext = document.querySelectorAll("button.btn.next-step")
-// buttonsNext.forEach(buttonNext => {
 
 
 
+
+//BAGS STEP1
           buttonNext[2].addEventListener('click', function(event) {
    event.preventDefault();
 
             const bagValue = document.querySelector("input[name='bags']")
 
+
             //TODO  // const categoryValue = document.querySelector("  input[value=Buttoncheckbox]")
               const categoryValues = document.querySelectorAll("  input[value]");
-            const categoryDesc = document.querySelector("div.form-group.form-group--checkbox > label > span.description");
+            // const categoryDesc = document.querySelector("div.form-group.form-group--checkbox > label > span.description");
             const institutionDesc = document.querySelector("div.form-group.form-group--checkbox > label > span.description > div.title");
 
-
+// console.log('Kategoria: ', categoryDesc.innerText)
 
       const bagCategorySummary = document.querySelectorAll('span.summary--text')[0];
-      const institutionSummary = document.querySelectorAll('span.summary--text')[1];
 
 
 
-
+ // bagCategorySummary.innerText = bagValue.value + ' worki, zawierające: ' + categoryDesc ;//TODO
  bagCategorySummary.innerText = bagValue.value + ' worki, zawierające: ' + categoryValues ;//TODO
-              institutionSummary.innerText = 'Dla: ' + institutionDesc.innerText;
     })
 
+
+
+
+  //INSTITUTION STEP3
+const radioBoxInstitution = document.querySelectorAll("div[data-step='3']  div.form-group.form-group--checkbox label")
+ 
+      radioBoxInstitution.forEach(radiobox => {
+    radiobox.addEventListener('click', function(event) {
+      console.log("Click on radiobox");
+      const institutionSummary = document.querySelectorAll('span.summary--text')[1];
+         const institutionTitle = this.querySelector(' div.title')
+          console.log(institutionTitle);
+
+        institutionSummary.innerText = 'Dla: ' +   institutionTitle.innerText;
+
+    })
+})
+
+
+
+
+
+          //ADDRESS STEP4
   buttonNext[3].addEventListener('click', function(event) {
    event.preventDefault();
 
@@ -440,36 +461,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-
-
-//
-//
-// const checkboxButton = document.querySelector("div .form-group.form-group--checkbox")
-//   checkboxButton.addEventListener('click', (event) => {
-//
-//     event.preventDefault();
-//     const categoryValue = checkboxButton.document.querySelector("label input[type=checkbox]").value
-//     const categoryName = checkboxButton.document.querySelector("label span.description")
-//
-//     console.log(checkboxButton)
-//     console.log(categoryValue)
-//     console.log(categoryName)
-//
-//         if (categoryValue[0] === '1') {
-//         categoryName.innerText === "ADAFsdf"
-//
-//     }
-//
-//      const newRow = document.createElement('tr');
-//
-//     const orderTd = document.createElement('td');
-//     orderTd.innerText = orderId;
-//   newRow.appendChild(orderTd);
-//
-//
-//
-// })
 
 
 
