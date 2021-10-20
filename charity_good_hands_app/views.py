@@ -228,9 +228,8 @@ class UserSettingsEditView(LoginRequiredMixin, View):
             if password == password2:
             # if check_password(password2, password):
                 password2 = make_password(password)
-
             else:
-                messages.add_message(request, messages.INFO, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
+                messages.add_message(request, messages.INFO, f'Podane hasła nie pasują, spróbuj jeszcze raz!')
                 return redirect('user_settings')
             print("Hura")
 
@@ -249,6 +248,11 @@ class UserSettingsEditView(LoginRequiredMixin, View):
                     user_update.email = email
                 if year != "":
                     user_update.year_of_birth = year
+                if password == "":
+                    user_update.save()
+                    messages.add_message(request, messages.INFO,
+                                         f'Nie podałeś hasła do zmiany więc pozostaje to samo')
+                    return redirect('user_settings')
                 if " " in password:
                     user_update.save()
                     messages.add_message(request, messages.INFO,
@@ -256,8 +260,7 @@ class UserSettingsEditView(LoginRequiredMixin, View):
                     return redirect('user_settings')
                 else:
                     user_update.password = password2
-
-                user_update.save()
+                    user_update.save()
             except:
                 messages.add_message(request, messages.INFO, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
                 # return render(request, 'register.html')

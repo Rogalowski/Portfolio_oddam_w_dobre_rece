@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //INSTITUTION STEP3
 const radioBoxInstitution = document.querySelectorAll("div[data-step='3']  div.form-group.form-group--checkbox label")
- 
+
       radioBoxInstitution.forEach(radiobox => {
     radiobox.addEventListener('click', function(event) {
       console.log("Click on radiobox");
