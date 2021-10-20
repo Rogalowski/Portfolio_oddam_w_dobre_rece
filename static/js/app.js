@@ -234,7 +234,85 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
       this.$step.parentElement.hidden = this.currentStep >= 6;
 
+
+
+
+
+
+
+
+
+
       // TODO: get data from inputs and show them in summary
+      const buttonNext = document.querySelectorAll("button.btn.next-step")
+      const summaryBlock = document.querySelector('div.summary')
+      // const buttonsNext = document.querySelectorAll("button.btn.next-step")
+// buttonsNext.forEach(buttonNext => {
+
+
+
+          buttonNext[2].addEventListener('click', function(event) {
+   event.preventDefault();
+
+            const bagValue = document.querySelector("input[name='bags']")
+
+            //TODO  // const categoryValue = document.querySelector("  input[value=Buttoncheckbox]")
+              const categoryValues = document.querySelectorAll("  input[value]");
+            const categoryDesc = document.querySelector("div.form-group.form-group--checkbox > label > span.description");
+            const institutionDesc = document.querySelector("div.form-group.form-group--checkbox > label > span.description > div.title");
+
+
+
+      const bagCategorySummary = document.querySelectorAll('span.summary--text')[0];
+      const institutionSummary = document.querySelectorAll('span.summary--text')[1];
+
+
+
+
+ bagCategorySummary.innerText = bagValue.value + ' worki, zawierające: ' + categoryValues ;//TODO
+              institutionSummary.innerText = 'Dla: ' + institutionDesc.innerText;
+    })
+
+  buttonNext[3].addEventListener('click', function(event) {
+   event.preventDefault();
+
+   const departureSummary = document.querySelectorAll(' div.form-section--column > ul >li') ;
+
+      const addressStreetDesc = document.querySelector("input[name='address']");
+      const addressCityDesc = document.querySelector("input[name='city']");
+      const addressPostCodeDesc = document.querySelector("input[name='postcode']");
+      const addressPhoneDesc = document.querySelector("input[name='phone']");
+
+               //3
+
+
+            departureSummary[0].innerText = 'Ulica: ' + addressStreetDesc.value;
+            departureSummary[1].innerText = 'Miasto: ' + addressCityDesc.value;
+            departureSummary[2].innerText = 'Kod: ' + addressPostCodeDesc.value;
+            departureSummary[3].innerText = 'Telefon: ' + addressPhoneDesc.value;
+
+       const departureData = document.querySelector("input[name='data']");
+       const departureTime = document.querySelector("input[name='time']");
+       const departureInfo = document.querySelector("textarea[name='more_info']");
+
+            departureSummary[4].innerText = 'Data: ' + departureData.value;
+            departureSummary[5].innerText = 'Czas: ' + departureTime.value;
+            departureSummary[6].innerText = 'Dodatkowe informacje:\n' + departureInfo.value;
+  })
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     /**
@@ -256,52 +334,52 @@ document.addEventListener("DOMContentLoaded", function() {
   // ####################################################################################
 // ##########################HIDDING INSTITUTIONS#######################################
 
-const institution = document.querySelectorAll("div.form-group.form-group--checkbox.radio");
-// const institution = document.querySelectorAll("input[type=radio]");
-// const institution = document.querySelectorAll("input[type=radio]");
-console.log(institution)
-
-function hideAll() {
-    institution[0].style.display = 'none';
-    institution[1].style.display = 'none';
-    institution[2].style.display = 'none';
-    institution[3].style.display = 'none';
-    institution[4].style.display = 'none';
-}
-// document.querySelectorAll('input[type=checkbox]').forEach(element =>{
-//   element.addEventListener('click', (event) => {
-
-// document.querySelector("[data-step='1']").addEventListener('click', (event) => {
-document.querySelector('div.form-group.form-group--checkbox').addEventListener('click', (event) => {
-
-// document.querySelector('input[type=checkbox]').addEventListener('click', (event) => {
-console.log(event)
-    event.preventDefault();
-
-    // const selectedValue = document.querySelector("input").value;
-    // const selectedValue = document.getElementsByName('categories').value;
-    // const selectedValue = document.querySelector('input[type=checkbox]').value;
-    const selectedValue = document.querySelector('div.form-group.form-group--checkbox.radio label input[value]').value;
-console.log("1")
-console.log(selectedValue)
-    if (selectedValue === '1') {
-        hideAll();
-        institution[0].style.display = 'block';
-    } else if (selectedValue === '2') {
-        hideAll();
-        institution[1].style.display = 'block';
-    } else if (selectedValue === '3') {
-        hideAll();
-        institution[2].style.display = 'block';
-    } else if (selectedValue === '4') {
-        hideAll();
-        institution[3].style.display = 'block';
-    } else {
-        hideAll();
-        institution[4].style.display = 'block';
-    }
-
-})
+// const institution = document.querySelectorAll("div.form-group.form-group--checkbox.radio");
+// // const institution = document.querySelectorAll("input[type=radio]");
+// // const institution = document.querySelectorAll("input[type=radio]");
+// console.log(institution)
+//
+// function hideAll() {
+//     institution[0].style.display = 'none';
+//     institution[1].style.display = 'none';
+//     institution[2].style.display = 'none';
+//     institution[3].style.display = 'none';
+//     institution[4].style.display = 'none';
+// }
+// // document.querySelectorAll('input[type=checkbox]').forEach(element =>{
+// //   element.addEventListener('click', (event) => {
+//
+// // document.querySelector("[data-step='1']").addEventListener('click', (event) => {
+// document.querySelector('div.form-group.form-group--checkbox').addEventListener('click', (event) => {
+//
+// // document.querySelector('input[type=checkbox]').addEventListener('click', (event) => {
+// console.log(event)
+//     event.preventDefault();
+//
+//     // const selectedValue = document.querySelector("input").value;
+//     // const selectedValue = document.getElementsByName('categories').value;
+//     // const selectedValue = document.querySelector('input[type=checkbox]').value;
+//     const selectedValue = document.querySelector('div.form-group.form-group--checkbox.radio label input[value]').value;
+// console.log("1")
+// console.log(selectedValue)
+//     if (selectedValue === '1') {
+//         hideAll();
+//         institution[0].style.display = 'block';
+//     } else if (selectedValue === '2') {
+//         hideAll();
+//         institution[1].style.display = 'block';
+//     } else if (selectedValue === '3') {
+//         hideAll();
+//         institution[2].style.display = 'block';
+//     } else if (selectedValue === '4') {
+//         hideAll();
+//         institution[3].style.display = 'block';
+//     } else {
+//         hideAll();
+//         institution[4].style.display = 'block';
+//     }
+//
+// })
 
 
 
@@ -339,29 +417,92 @@ console.log(selectedValue)
 
 
 
-
-
-
   // ####################################################################################
 // ##########################SUMMARY#######################################
+// const buttonNext = document.querySelectorAll("button .btn.next-step")
+// // const buttonNext2 = document.querySelector("#button2");
+//
+// buttonNext.addEventListener('clic', (event) => {
+// console.log(event);
+// console.log(buttonNext);
+//     event.preventDefault();
+//
+// // const providedBags = document.querySelector("#bag").value;
+// const providedBags = document.querySelector("label input[name='bags']").value;
+// console.log("FFF");
+// console.log(providedBags);
+//
+// })
 
-document.querySelector("button .btn.next-step").addEventListener('click', (event) => {
-
-    event.preventDefault();
-
-const providedBags = document.querySelector("input[name='bags']").value
 
 
-     const newRow = document.createElement('tr');
-
-    const orderTd = document.createElement('td');
-    orderTd.innerText = orderId;
-  newRow.appendChild(orderTd);
-  document.querySelector('span .summary--text').appendChild(newRow);
-  document.querySelector('span .summary--text').innerText(providedBags)
 
 
-})
+
+
+
+
+
+//
+//
+// const checkboxButton = document.querySelector("div .form-group.form-group--checkbox")
+//   checkboxButton.addEventListener('click', (event) => {
+//
+//     event.preventDefault();
+//     const categoryValue = checkboxButton.document.querySelector("label input[type=checkbox]").value
+//     const categoryName = checkboxButton.document.querySelector("label span.description")
+//
+//     console.log(checkboxButton)
+//     console.log(categoryValue)
+//     console.log(categoryName)
+//
+//         if (categoryValue[0] === '1') {
+//         categoryName.innerText === "ADAFsdf"
+//
+//     }
+//
+//      const newRow = document.createElement('tr');
+//
+//     const orderTd = document.createElement('td');
+//     orderTd.innerText = orderId;
+//   newRow.appendChild(orderTd);
+//
+//
+//
+// })
+
+
+
+
+
+// document.querySelectorAll("div[data-step='1'] div.form-group.form-group--checkbox").forEach(checkbox => {
+//     checkbox.addEventListener('click', function(event) {
+//       console.log("Click on checkbox");
+//          event.preventDefault();
+//       const categoryDesc = this.querySelector("span.description")
+//           if (this.innerText === "ubrania, do wyrzucenia"){
+//             categoryDesc.innerText = "ubrania, do wyrzuceniaubrania, do wyrzucenia"
+//           }
+//           if (this.innerText === "zabawki"){
+//             this.innerText = "zabawkizabawkizabawki"
+//           }
+//           if (this.innerText === "ubrania, które nadają się do ponownego użycia"){
+//             this.innerText = "ubrania, które nadają się do ponownego użyciaubrania, które nadają się do ponownego użycia"
+//           }
+//           if (this.innerText === "książki"){
+//             this.innerText = "książkiksiążkiksiążki"
+//           }
+//           if (this.innerText === "inne"){
+//             this.innerText = "inneinneinne"
+//           }
+//
+//
+//
+//
+//     })
+// })
+
+
 
 
 

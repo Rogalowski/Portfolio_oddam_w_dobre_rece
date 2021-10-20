@@ -91,8 +91,10 @@
       <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
-        <form action="" method="POST">
-{#        <form action="{% url 'form_confirmation' %}" method="POST">#}
+{#        <form action="" method="POST">#}
+        <form action="{% url 'form_confirmation' %}" method="POST">
+            {% csrf_token %}
+
 {#        <form action="form-confirmation.html" method="POST">#}
 
 
@@ -114,41 +116,7 @@
               </label>
             </div>
 {% endfor %}
-{#            <div class="form-group form-group--checkbox">#}
-{#              <label>#}
-{#                <input#}
-{#                  type="checkbox"#}
-{#                  name="categories"#}
-{#                  value="clothes-useless"#}
-{#                />#}
-{#                <span class="checkbox"></span>#}
-{#                <span class="description">ubrania, do wyrzucenia</span>#}
-{#              </label>#}
-{#            </div>#}
-{##}
-{#            <div class="form-group form-group--checkbox">#}
-{#              <label>#}
-{#                <input type="checkbox" name="categories" value="toys" />#}
-{#                <span class="checkbox"></span>#}
-{#                <span class="description">zabawki</span>#}
-{#              </label>#}
-{#            </div>#}
-{##}
-{#            <div class="form-group form-group--checkbox">#}
-{#              <label>#}
-{#                <input type="checkbox" name="categories" value="books" />#}
-{#                <span class="checkbox"></span>#}
-{#                <span class="description">książki</span>#}
-{#              </label>#}
-{#            </div>#}
-{##}
-{#            <div class="form-group form-group--checkbox">#}
-{#              <label>#}
-{#                <input type="checkbox" name="categories" value="other" />#}
-{#                <span class="checkbox"></span>#}
-{#                <span class="description">inne</span>#}
-{#              </label>#}
-{#            </div>#}
+
 
             <div class="form-group form-group--buttons">
               <button type="button" class="btn next-step">Dalej</button>
@@ -162,13 +130,13 @@
             <div class="form-group form-group--inline">
               <label>
                 Liczba 60l worków:
-                <input type="number" name="bags" step="2" min="1" />
+                <input  type="number" name="bags" step="2" min="1" />
               </label>
             </div>
 
             <div class="form-group form-group--buttons">
               <button type="button" class="btn prev-step">Wstecz</button>
-              <button type="button" class="btn next-step">Dalej</button>
+              <button  type="button" class="btn next-step">Dalej</button>
             </div>
           </div>
 
@@ -194,20 +162,7 @@
               </label>
             </div>
               {% endfor %}
-{##}
-{#            <div class="form-group form-group--checkbox">#}
-{#              <label>#}
-{#                <input type="radio" name="organization" value="old" />#}
-{#                <span class="checkbox radio"></span>#}
-{#                <span class="description">#}
-{#                  <div class="title">Fundacja “Dla dzieci"</div>#}
-{#                  <div class="subtitle">#}
-{#                    Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji#}
-{#                    życiowej.#}
-{#                  </div>#}
-{#                </span>#}
-{#              </label>#}
-{#            </div>#}
+
 
             <div class="form-group form-group--buttons">
               <button type="button" class="btn prev-step">Wstecz</button>
@@ -278,7 +233,7 @@
                   <li>
                     <span class="icon icon-bag"></span>
                     <span class="summary--text"
-                      >4 worki ubrań w dobrym stanie dla dzieci</span
+                      >4 worki zawierające w dobrym stanie dla dzieci </span
                     >
                   </li>
 
@@ -295,7 +250,7 @@
                 <div class="form-section--column">
                   <h4>Adres odbioru:</h4>
                   <ul>
-                    <li>Prosta 51</li>
+                    <li>ul. JavaScript nie odczytany</li>
                     <li>Warszawa</li>
                     <li>99-098</li>
                     <li>123 456 789</li>
@@ -327,41 +282,6 @@
      <script src="{% static  'js/app.js' %}"></script>
       {% endblock section %}
 
-{#    <footer>#}
-{#      <div class="contact">#}
-{#        <h2>Skontaktuj się z nami</h2>#}
-{#        <h3>Formularz kontaktowy</h3>#}
-{#        <form class="form--contact">#}
-{#          <div class="form-group form-group--50">#}
-{#            <input type="text" name="name" placeholder="Imię" />#}
-{#          </div>#}
-{#          <div class="form-group form-group--50">#}
-{#            <input type="text" name="surname" placeholder="Nazwisko" />#}
-{#          </div>#}
-{##}
-{#          <div class="form-group">#}
-{#            <textarea#}
-{#              name="message"#}
-{#              placeholder="Wiadomość"#}
-{#              rows="1"#}
-{#            ></textarea>#}
-{#          </div>#}
-{##}
-{#          <button class="btn" type="submit">Wyślij</button>#}
-{#        </form>#}
-{#      </div>#}
-{#      <div class="bottom-line">#}
-{#        <span class="bottom-line--copy">Copyright &copy; 2018</span>#}
-{#        <div class="bottom-line--icons">#}
-{#          <a href="#" class="btn btn--small"#}
-{#            ><img src="images/icon-facebook.svg"#}
-{#          /></a>#}
-{#          <a href="#" class="btn btn--small"#}
-{#            ><img src="images/icon-instagram.svg"#}
-{#          /></a>#}
-{#        </div>#}
-{#      </div>#}
-{#    </footer>#}
 
 
 {#  </body>#}

@@ -47,21 +47,28 @@
             <button class="btn" type="submit">Zmień ustawienia</button>
 
 </h3>
+
+            <h2><a class="btn btn--small btn--without-border" href="{{request.META.HTTP_REFERER}}">Wróć na poprzednią stronę</a>  </h2>
+
        </div>
 
        </form>
+
+
         {% if messages %}
  <h2 style="color: red">
     {% for message in messages %}  {{ message }}   {% endfor %}
 </h2>
 {% endif %}
 
+
+
     </section>
 
 
 
 
- <h2><a class="btn btn--small btn--without-border" href="{{request.META.HTTP_REFERER}}">Go back</a>  </h2>
+
 
 
 {% endblock content %}
