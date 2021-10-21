@@ -250,80 +250,44 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //CATEGORY STEP1
-       const boxCheckCategory = document.querySelectorAll("div[data-step='1']  div.form-group.form-group--checkbox label")
-      let arrCategory = [  ]
-
-
-
-
-
+  let arrCategory = [  ]
 
        buttonNext[0].addEventListener('click', function(event) {
          event.preventDefault();
 
-         const InstitutionValue = document.querySelectorAll("div[data-step='3'] label input[type='radio']")
          const radioBoxInstitutionLabel = document.querySelectorAll("div[data-step='3']  div.form-group.form-group--checkbox label ")
+         const checkBoxCategory = document.querySelectorAll("div[data-step='1']  div.form-group.form-group--checkbox label input[value]")
 
- const checkBoxCategory = document.querySelectorAll("div[data-step='1']  div.form-group.form-group--checkbox label input[value]")
-
-
-        console.log("checkBoxCategory ", checkBoxCategory)
-
+         console.log("checkBoxCategory ", checkBoxCategory)
+//Checbox checked, get values
     for (let i = 0; i < checkBoxCategory.length; i++) {
         if (checkBoxCategory[i].checked === true) {
             arrCategory.push(checkBoxCategory[i].value);
         }
     }
-          console.log("LLLLLLLLLLLLLL " ,arrCategory )
+          console.log("Checked Values" ,arrCategory )
 
-
-
-
-// console.log("radioBoxInstitutionLabel: " ,radioBoxInstitutionLabel)
-
-console.log("NEXT: " , arrCategory )
-
-         // InstitutionValue.forEach((element)=>{
+ //Each Label of institution, get value of category.value.id
          radioBoxInstitutionLabel.forEach((element)=>{
 
            console.log("element: ",element  )
            console.log("radioBoxInstitutionValue: ", element.querySelector("input[type='radio']").value)
-           // console.log("categoryDonation.value: ", categoryDonation.value )
            console.log("arrCategory: ",arrCategory  )
 
        for (let i = 0; i < arrCategory.length; i++) {
          console.log(i ," index: ", arrCategory[i])
  console.log("ROWNE: z", element)
-                    // if ( element.querySelector("input[type='radio']").value in arrCategory.values() ){
-                    //OK if ( element.querySelector("input[type='radio']").value !== arrCategory.find(element => element)){
-                    // if ( element.querySelector("input[type='radio']").value !== arrCategory[i]){
 
-<<<<<<< HEAD
-                    // if (element.querySelector("input[type='radio']").value in arrCategory[i] ){
-
-                    // if (element.value !== arrCategory[i] ){
-                    // if (arrCategory in element.querySelector("input[type='radio']").value){
-
-         // if ( element.querySelector("input[type='radio']").value in  arrCategory){
-
-         // if (!containsAny(arrCategory, element.querySelector("input[type='radio']").value) ){
-         if (  !arrCategory.includes(element.querySelector("input[type='radio']").value) ){
-=======
-
-       for (let i = 0; i < arrCategory.length; i++) {
-console.log("iiiii to: ", arrCategory[i])
-
-                    // if ( element.querySelector("input[type='radio']").value in arrCategory.values() ){
-                    //OK if ( element.querySelector("input[type='radio']").value !== arrCategory.find(element => element)){
-                    // if ( element.querySelector("input[type='radio']").value !== arrCategory[i]){
-                      console.log("ROWNE: z", element)
-                    // if (element.querySelector("input[type='radio']").value in arrCategory[i] ){
-                    if (  !arrCategory.includes(element.querySelector("input[type='radio']").value) ){
-                    // if (element.value !== arrCategory[i] ){
-                    // if (arrCategory in radioBoxInstitutionValue){
-
+         // if ( element.querySelector("input[type='radio']").value in arrCategory.values() ){
+         //OK if ( element.querySelector("input[type='radio']").value !== arrCategory.find(element => element)){
          // if ( element.querySelector("input[type='radio']").value !== arrCategory[i]){
->>>>>>> parent of a11e800... #3 JavaScript filtering Institutions by category In Progress #2
+         // if (element.querySelector("input[type='radio']").value in arrCategory[i] ){
+         // if (element.value !== arrCategory[i] ){
+         // if (arrCategory in element.querySelector("input[type='radio']").value){
+         // if ( element.querySelector("input[type='radio']").value in  arrCategory){
+         // if (!containsAny(arrCategory, element.querySelector("input[type='radio']").value) ){
+
+         if (  !arrCategory.includes(element.querySelector("input[type='radio']").value) ){
 
                       element.style.display = 'none';
          } else{
