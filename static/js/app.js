@@ -249,8 +249,93 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-//BAGS STEP1
-          buttonNext[2].addEventListener('click', function(event) {
+//CATEGORY STEP1
+       const boxCheckCategory = document.querySelectorAll("div[data-step='1']  div.form-group.form-group--checkbox label")
+      var arrCategory = [  ]
+
+
+
+
+
+
+
+      boxCheckCategory.forEach(checkbox => {
+    checkbox.addEventListener('click', function(event) {
+
+       console.log("Click on checkbox");
+
+         const categoryDonation = this.querySelector(' label input[value]')
+
+
+
+      console.log("Value Category: " ,categoryDonation.value)
+
+      const radioBoxInstitutionValue = document.querySelectorAll("div[data-step='3'] label input[value]")
+
+
+          if ( !( categoryDonation.value in arrCategory ) ) {
+    arrCategory.pop()
+}
+
+arrCategory.push(categoryDonation.value);
+
+console.log("Tablice: ", arrCategory);
+        // institutionSummary.innerText = 'Dla: ' +   institutionTitle.innerText;
+
+
+
+
+
+       buttonNext[0].addEventListener('click', function(event) {
+         event.preventDefault();
+
+         const InstitutionValue = document.querySelectorAll("div[data-step='3'] label input[type='radio']")
+         const radioBoxInstitutionLabel = document.querySelectorAll("div[data-step='3']  div.form-group.form-group--checkbox label ")
+
+
+
+// console.log("radioBoxInstitutionLabel: " ,radioBoxInstitutionLabel)
+
+console.log("NEXT: " , arrCategory )
+
+         // InstitutionValue.forEach((element)=>{
+         radioBoxInstitutionLabel.forEach((element)=>{
+
+           console.log("element: ",element  )
+           console.log("radioBoxInstitutionValue: ", element.querySelector("input[type='radio']").value)
+           // console.log("categoryDonation.value: ", categoryDonation.value )
+           console.log("arrCategory: ",arrCategory  )
+           console.log("arrCategoryValues: ", parseInt(arrCategory)  )
+
+                    // if ( element.querySelector("input[type='radio']").value in arrCategory.values() ){
+                    if ( element.querySelector("input[type='radio']").value !== arrCategory.find(element => element)){
+                    // if ( element.querySelector("input[type='radio']").value !== categoryDonation.value ){
+                      console.log("ROWNE: z", element)
+                    // if (element.value in arrCategory ){
+                    // if (arrCategory in radioBoxInstitutionValue){
+
+
+
+                      element.style.display = 'none';
+
+         } else{
+                      element.style.display = '';
+                    }
+
+         })
+
+       })
+
+
+
+
+
+
+    })
+})
+
+//BAGS STEP2
+          buttonNext[1].addEventListener('click', function(event) {
    event.preventDefault();
 
             const bagValue = document.querySelector("input[name='bags']")
