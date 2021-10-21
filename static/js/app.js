@@ -251,36 +251,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //CATEGORY STEP1
        const boxCheckCategory = document.querySelectorAll("div[data-step='1']  div.form-group.form-group--checkbox label")
-      var arrCategory = [  ]
+      let arrCategory = [  ]
 
-
-
-
-
-
-
-      boxCheckCategory.forEach(checkbox => {
-    checkbox.addEventListener('click', function(event) {
-
-       console.log("Click on checkbox");
-
-         const categoryDonation = this.querySelector(' label input[value]')
-
-
-
-      console.log("Value Category: " ,categoryDonation.value)
-
-      const radioBoxInstitutionValue = document.querySelectorAll("div[data-step='3'] label input[value]")
-
-
-          if ( !( categoryDonation.value in arrCategory ) ) {
-    arrCategory.pop()
-}
-
-arrCategory.push(categoryDonation.value);
-
-console.log("Tablice: ", arrCategory);
-        // institutionSummary.innerText = 'Dla: ' +   institutionTitle.innerText;
 
 
 
@@ -291,6 +263,19 @@ console.log("Tablice: ", arrCategory);
 
          const InstitutionValue = document.querySelectorAll("div[data-step='3'] label input[type='radio']")
          const radioBoxInstitutionLabel = document.querySelectorAll("div[data-step='3']  div.form-group.form-group--checkbox label ")
+
+ const checkBoxCategory = document.querySelectorAll("div[data-step='1']  div.form-group.form-group--checkbox label input[value]")
+
+
+        console.log("checkBoxCategory ", checkBoxCategory)
+
+    for (let i = 0; i < checkBoxCategory.length; i++) {
+        if (checkBoxCategory[i].checked === true) {
+            arrCategory.push(checkBoxCategory[i].value);
+        }
+    }
+          console.log("LLLLLLLLLLLLLL " ,arrCategory )
+
 
 
 
@@ -305,26 +290,29 @@ console.log("NEXT: " , arrCategory )
            console.log("radioBoxInstitutionValue: ", element.querySelector("input[type='radio']").value)
            // console.log("categoryDonation.value: ", categoryDonation.value )
            console.log("arrCategory: ",arrCategory  )
-           console.log("arrCategoryValues: ", parseInt(arrCategory)  )
+
+
+
+       for (let i = 0; i < arrCategory.length; i++) {
+console.log("iiiii to: ", arrCategory[i])
 
                     // if ( element.querySelector("input[type='radio']").value in arrCategory.values() ){
-                    if ( element.querySelector("input[type='radio']").value !== arrCategory.find(element => element)){
-                    // if ( element.querySelector("input[type='radio']").value !== categoryDonation.value ){
+                    //OK if ( element.querySelector("input[type='radio']").value !== arrCategory.find(element => element)){
+                    // if ( element.querySelector("input[type='radio']").value !== arrCategory[i]){
                       console.log("ROWNE: z", element)
-                    // if (element.value in arrCategory ){
+                    // if (element.querySelector("input[type='radio']").value in arrCategory[i] ){
+                    if (  !arrCategory.includes(element.querySelector("input[type='radio']").value) ){
+                    // if (element.value !== arrCategory[i] ){
                     // if (arrCategory in radioBoxInstitutionValue){
 
-
+         // if ( element.querySelector("input[type='radio']").value !== arrCategory[i]){
 
                       element.style.display = 'none';
-
          } else{
                       element.style.display = '';
                     }
+   }
 
-         })
-
-       })
 
 
 
