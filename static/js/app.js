@@ -274,28 +274,32 @@ document.addEventListener("DOMContentLoaded", function() {
            console.log("radioBoxInstitutionValue: ", element.querySelector("input[type='radio']").value)
            console.log("arrCategory: ",arrCategory  )
 
+       for (let i = 0; i < arrCategory.length; i++) {
+         console.log(i ," index: ", arrCategory[i])
+ console.log("ROWNE: z", element)
+                    // if ( element.querySelector("input[type='radio']").value in arrCategory.values() ){
+                    //OK if ( element.querySelector("input[type='radio']").value !== arrCategory.find(element => element)){
+                    // if ( element.querySelector("input[type='radio']").value !== arrCategory[i]){
 
-if (  !arrCategory.includes(element.querySelector("input[type='radio']").value) ){
-//OK  if ( element.querySelector("input[type='radio']").value[i] !== arrCategory.find(element => element)){
-                      element.style.display = 'none'; //hide no checked institutions by category
+                    // if (element.querySelector("input[type='radio']").value in arrCategory[i] ){
+
+                    // if (element.value !== arrCategory[i] ){
+                    // if (arrCategory in element.querySelector("input[type='radio']").value){
+
+         // if ( element.querySelector("input[type='radio']").value in  arrCategory){
+
+         // if (!containsAny(arrCategory, element.querySelector("input[type='radio']").value) ){
+         if (  !arrCategory.includes(element.querySelector("input[type='radio']").value) ){
+
+                      element.style.display = 'none';
          } else{
                       element.style.display = '';
                     }
+   }
 
-       //
-       // for (let i = 0; i < arrCategory.length; i++) {
-       //   console.log(i ," index: ", arrCategory[i])
-       //   console.log("ROWNE: z", element)
-       //
-       //   // if ( element.querySelector("input[type='radio']").value in arrCategory.values() ){
-       //   // if ( element.querySelector("input[type='radio']").value !== arrCategory[i]){
-       //   // if (element.querySelector("input[type='radio']").value in arrCategory[i] ){
-       //   // if (element.value !== arrCategory[i] ){
-       //   // if (arrCategory in element.querySelector("input[type='radio']").value){
-       //   // if ( element.querySelector("input[type='radio']").value in  arrCategory){
-       //   // if (  arrCategory.indexOf(element.querySelector("input[type='radio']").value) ){
-       //
-   // }
+
+
+
 
 
 
