@@ -144,3 +144,12 @@ AUTH_USER_MODEL = "charity_good_hands_app.User"
 LOGIN_URL = 'login_view'
 LOGIN_REDIRECT_URL = 'add_donation_view'
 LOGOUT_REDIRECT_URL = 'home_index'
+
+# //Should be included in .env
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'informatyka3am@gmail.com'
+EMAIL_FROM_USER = 'informatyka3am@gmail.com'
+# EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = 'informatyka'
+EMAIL_PORT = 587

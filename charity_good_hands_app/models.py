@@ -11,6 +11,7 @@ INSTITUTION = (
 
 class User(AbstractUser):
     """Stores a single user entry."""
+    is_email_verified = models.BooleanField(default=False)
     year_of_birth = models.IntegerField(null=True)
 
 

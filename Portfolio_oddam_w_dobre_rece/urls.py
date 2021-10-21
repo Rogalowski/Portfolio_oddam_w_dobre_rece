@@ -18,8 +18,9 @@ from django.urls import path
 from django.conf.urls.static import static  # static ROOT import
 from django.conf import settings  # static ROOT import
 
+
 from charity_good_hands_app.views import LandingPageView, AddDonationView, LoginView, RegisterView, LogoutView, \
-    FormConfirmationView, UserDetailsView, UserSettingsEditView, TakenDonationButton
+    FormConfirmationView, UserDetailsView, UserSettingsEditView, TakenDonationButton, activate_user
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin_panel"),
@@ -31,6 +32,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name="logout_view"),
     path('register/', RegisterView.as_view(), name="register_view"),
     path('user_profile/', UserDetailsView.as_view(), name="user_profile"),
+    path('activate_user/<uidb64>/<token>',  activate_user, name="activate"),
     path('user_settings/', UserSettingsEditView.as_view(), name="user_settings"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  # static files ROOT
 

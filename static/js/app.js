@@ -387,7 +387,7 @@ const radioBoxInstitution = document.querySelectorAll("div[data-step='3']  div.f
      * TODO: validation, send data to server
      */
     submit(e) {
-      e.preventDefault();
+
       this.currentStep++;
       this.updateForm();
     }

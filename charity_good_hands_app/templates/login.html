@@ -48,7 +48,9 @@
         </div>
       </form>
     </section>
-
+ <h2 style="color: green">
+    {% for message in messages %}  {{ message }}   {% endfor %}
+</h2>
 {% endblock content %}
 
 {#    <footer>#}
