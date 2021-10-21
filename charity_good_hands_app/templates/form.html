@@ -149,19 +149,16 @@
               {% for institution in institutions  %}
             <div class="form-group form-group--checkbox">
               <label>
-
-                  {% for category in institution.categories.all %}
-                <input type="radio" name="organization" value={{ category.id }} id="{{ category.name }}" />
-
-                      {% endfor %}
-
+                <input type="radio" name="organization" value={% for category in institution.categories.all %} {{ category.id }} {% endfor %} />
 {#                <input type="radio" name="organization" value="old" />#}
+
                 <span class="checkbox radio"></span>
                 <span class="description">
                   <div class="title">{{ institution.name }}</div>
+
                   <div class="subtitle">
                     Cel i misja: {{ institution.description }}
-                      <br> Category value={% for category in institution.categories.all %} {{ category.id }} {% endfor %}
+                   <div class="category">Categorie: {% for category in institution.categories.all %} {{ category.id }} {{ category.name }}, {% endfor %}</div>
                   </div>
                 </span>
               </label>

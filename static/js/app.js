@@ -309,7 +309,7 @@ const bagCategorySummary = document.querySelectorAll('span.summary--text')[0];
             const bagValue = document.querySelector("input[name='bags']")
 
             //TODO  // const categoryValue = document.querySelector("  input[value=Buttoncheckbox]")
-  bagCategorySummary.innerText = bagValue.value + ' worki, zawierające: ' ;//TODO
+  bagCategorySummary.innerText = 'Liczba worków: ' + bagValue.value  ;//TODO
     })
 
 
@@ -328,8 +328,11 @@ const radioBoxInstitution = document.querySelectorAll("div[data-step='3']  div.f
 
         institutionSummary.innerText = 'Dla: ' +   institutionTitle.innerText;
 
+          // bagCategorySummary.innerText = bagCategorySummary.innerText + ' zawierające: ' + radiobox.querySelector("div.category").innerText
+
     })
-})
+
+ })
 
 
 
