@@ -327,3 +327,4 @@ class RegisterView(View):
 
         send_activation_email(user, request)
         return redirect('login_view')
+
