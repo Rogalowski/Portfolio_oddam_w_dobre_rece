@@ -36,13 +36,17 @@ urlpatterns = [
     path('activate_user/<uidb64>/<token>',  activate_user, name="activate"),
     path('user_settings/', UserSettingsEditView.as_view(), name="user_settings"),
 
-    path('reset_password/', auth_views.PasswordResetView.as_view(template_name="auth/password_reset.html"),
+    path('reset_password/',
+         auth_views.PasswordResetView.as_view(template_name="auth/password_reset.html"),
          name='password_reset'),
-    path('reset_password/done', auth_views.PasswordResetDoneView.as_view(template_name="auth/password_reset_done.html"),
+    path('reset_password/done',
+         auth_views.PasswordResetDoneView.as_view(template_name="auth/password_reset_done.html"),
          name='password_reset_done'),
-    path('reset/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(template_name="auth/password_reset_confirm.html"),
+    path('reset/<uidb64>/<token>',
+         auth_views.PasswordResetConfirmView.as_view(template_name="auth/password_reset_confirm.html"),
          name='password_reset_confirm'),
-    path('reset_password/complete', auth_views.PasswordResetCompleteView.as_view(),
+    path('reset_password/complete',
+         auth_views.PasswordResetCompleteView.as_view(template_name="auth/password_reset_complete.html"),
          name='password_reset_complete'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  # static files ROOT
 
