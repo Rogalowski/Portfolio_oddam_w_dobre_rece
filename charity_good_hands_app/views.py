@@ -169,76 +169,6 @@ class LogoutView(View):
         return redirect('home_index')
 
 
-def send_activation_email(user, request):
-    current_site = get_current_site(request)
-    email_subject = 'Aktywacja konta w ODDAM W DOBRE RĘCE'
-
-    email_body = render_to_string('auth/activate.html', {
-        'user': user,
-        'domain': current_site,
-        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-        'token': account_activation_token.make_token(user),
-    })
-
-    email = EmailMessage(
-        subject=email_subject,
-        body=email_body,
-        from_email=settings.EMAIL_FROM_USER,
-        to=[user.email]
-    )
-    email.send()
-
-
-def activate_user(request, uidb64, token):
-    uid = force_text(urlsafe_base64_decode(uidb64))
-    user = User.objects.get(pk=uid)
-
-
-    if user and account_activation_token.check_token(user, token):
-        user.is_email_verified = True
-        user.is_active = True
-        user.save()
-
-        messages.add_message(request, messages.ERROR, 'Email zweryfikowany poprawnie, możesz się zalogować :)')
-        return redirect('login_view')
-
-    messages.add_message(request, messages.ERROR, f'Użytkownik źle zweryfikowany, prawdopodobnie aktywny!')
-    return redirect('register_view')
-
-
-class RegisterView(View):
-    def get(self, request):
-        return render(request, 'register.html')
-
-    def post(self, request, *args, **kwargs):
-        name = request.POST.get('name')
-        surname = request.POST.get('surname')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        password2 = request.POST.get('password2')
-
-        if password == password2:
-            password2 = make_password(password)
-        else:
-            messages.add_message(request, messages.ERROR, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
-            return render(request, 'register.html')
-
-        try:
-            user = User.objects.create(
-                username=email,
-                first_name=name,
-                last_name=surname,
-                email=email,
-                password=password2,
-                is_active=False,
-            )
-        except:
-            messages.add_message(request, messages.ERROR, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
-            return render(request, 'register.html')
-
-        send_activation_email(user, request)
-        return redirect('login_view')
-
 
 class UserDetailsView(LoginRequiredMixin, View):
     def get(self, request):
@@ -326,3 +256,74 @@ class TakenDonationButton(LoginRequiredMixin, View):
         donation.is_taken = True
         donation.save()
         return redirect('user_profile')
+
+
+def send_activation_email(user, request):
+    current_site = get_current_site(request)
+    email_subject = 'Aktywacja konta na stronie ODDAM W DOBRE RĘCE'
+
+    email_body = render_to_string('auth/activate.html', {
+        'user': user,
+        'domain': current_site,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': account_activation_token.make_token(user),
+    })
+
+    email = EmailMessage(
+        subject=email_subject,
+        body=email_body,
+        from_email=settings.EMAIL_FROM_USER,
+        to=[user.email]
+    )
+    email.send()
+
+
+def activate_user(request, uidb64, token):
+    uid = force_text(urlsafe_base64_decode(uidb64))
+    user = User.objects.get(pk=uid)
+
+
+    if user and account_activation_token.check_token(user, token):
+        user.is_email_verified = True
+        user.is_active = True
+        user.save()
+
+        messages.add_message(request, messages.ERROR, 'Email zweryfikowany poprawnie, możesz się zalogować :)')
+        return redirect('login_view')
+
+    messages.add_message(request, messages.ERROR, f'Użytkownik źle zweryfikowany, prawdopodobnie aktywny!')
+    return redirect('register_view')
+
+
+class RegisterView(View):
+    def get(self, request):
+        return render(request, 'register.html')
+
+    def post(self, request, *args, **kwargs):
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+
+        if password == password2:
+            password2 = make_password(password)
+        else:
+            messages.add_message(request, messages.ERROR, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
+            return render(request, 'register.html')
+
+        try:
+            user = User.objects.create(
+                username=email,
+                first_name=name,
+                last_name=surname,
+                email=email,
+                password=password2,
+                is_active=False,
+            )
+        except:
+            messages.add_message(request, messages.ERROR, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
+            return render(request, 'register.html')
+
+        send_activation_email(user, request)
+        return redirect('login_view')
