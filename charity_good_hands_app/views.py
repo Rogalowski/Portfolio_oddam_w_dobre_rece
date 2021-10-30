@@ -111,7 +111,7 @@ class LandingPageView(View):
 
         # messages.add_message(request, messages.SUCCESS, f'Formularz wysłano pomyślnie')
         return redirect('home_index')
-
+ 
 
 class FormConfirmationView(View):
     def get(self, request):
