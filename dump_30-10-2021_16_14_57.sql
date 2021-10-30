@@ -318,13 +318,14 @@ CREATE TABLE public.charity_good_hands_app_donation (
     quantity integer NOT NULL,
     address character varying(128) NOT NULL,
     phone_number integer NOT NULL,
-    zip_code integer NOT NULL,
+    zip_code character varying(128) NOT NULL,
     pick_up_date date NOT NULL,
     pick_up_time timestamp with time zone NOT NULL,
     institution_id bigint NOT NULL,
     user_id bigint,
     pick_up_comment text NOT NULL,
-    city character varying(128) NOT NULL
+    city character varying(128) NOT NULL,
+    is_taken boolean NOT NULL
 );
 
 
@@ -470,7 +471,8 @@ CREATE TABLE public.charity_good_hands_app_user (
     is_staff boolean NOT NULL,
     is_active boolean NOT NULL,
     date_joined timestamp with time zone NOT NULL,
-    year_of_birth integer
+    year_of_birth integer,
+    is_email_verified boolean NOT NULL
 );
 
 
@@ -865,21 +867,26 @@ COPY public.charity_good_hands_app_category (id, name) FROM stdin;
 -- Data for Name: charity_good_hands_app_donation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.charity_good_hands_app_donation (id, quantity, address, phone_number, zip_code, pick_up_date, pick_up_time, institution_id, user_id, pick_up_comment, city) FROM stdin;
-1	11	Kasperski 20	112221333	74	2021-10-08	2021-10-09 17:04:29.842+00	1	1		
-2	4	Mikołaja 2	112221333	74	2021-10-08	2021-10-09 17:04:29.842+00	2	1		
-3	3	Mikołaja 2	112221333	74	2021-10-08	2021-10-09 17:04:29.842+00	2	1		
-11	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:19:35.499093+00	1	1	sdsdvs	sdfsd
-6	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:14:28.505707+00	1	1	sdsdvs	sdfsd
-9	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:18:48.278091+00	1	1	sdsdvs	sdfsd
-10	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:19:12.587781+00	1	1	sdsdvs	sdfsd
-7	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:15:31.626052+00	1	1	sdsdvs	sdfsd
-8	3	vccxvxcvxc	234234	324234	2021-10-09	2021-10-10 15:18:27.354192+00	1	1	sdsdvs	sdfsd
-16	5	werwe	234234	324234	2022-06-04	2022-06-05 15:27:25.232+00	7	2	dfds	few
-13	2	vccxvxcvxc	234234	324234	2021-10-04	2021-10-05 15:21:27.94+00	8	2	sdsdvs	sdfsd
-14	3	vccxvxcvxc	234234	324234	2021-10-23	2021-10-24 15:21:55.076+00	10	2	sdsdvs	sdfsd
-12	7	vccxvxcvxc	234234	324234	2021-10-04	2021-10-05 11:04:04.96+00	5	2	sdsdvs	sdfsd
-15	13	werwe	234234	324234	2020-08-27	2020-08-27 00:00:00+00	11	2	dfds	few
+COPY public.charity_good_hands_app_donation (id, quantity, address, phone_number, zip_code, pick_up_date, pick_up_time, institution_id, user_id, pick_up_comment, city, is_taken) FROM stdin;
+1	11	Kasperski 20	112221333	74	2021-10-08	2021-10-09 17:04:29.842+00	1	1			f
+2	4	Mikołaja 2	112221333	74	2021-10-08	2021-10-09 17:04:29.842+00	2	1			f
+3	3	Mikołaja 2	112221333	74	2021-10-08	2021-10-09 17:04:29.842+00	2	1			f
+11	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:19:35.499093+00	1	1	sdsdvs	sdfsd	f
+6	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:14:28.505707+00	1	1	sdsdvs	sdfsd	f
+9	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:18:48.278091+00	1	1	sdsdvs	sdfsd	f
+10	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:19:12.587781+00	1	1	sdsdvs	sdfsd	f
+7	3	vccxvxcvxc	234234	324234	2021-10-10	2021-10-10 15:15:31.626052+00	1	1	sdsdvs	sdfsd	f
+8	3	vccxvxcvxc	234234	324234	2021-10-09	2021-10-10 15:18:27.354192+00	1	1	sdsdvs	sdfsd	f
+15	13	werwe	234234	324234	2021-10-30	2021-10-17 19:55:39.336665+00	11	2	dfds	few	f
+14	3	vccxvxcvxc	234234	324234	2021-10-12	2021-10-17 19:03:27.662266+00	10	2	sdsdvs	sdfsd	f
+12	7	vccxvxcvxc	234234	324234	2021-10-02	2021-10-17 19:03:24.522693+00	5	2	sdsdvs	sdfsd	f
+13	2	vccxvxcvxc	234234	324234	2021-10-17	2021-10-17 19:56:31.854352+00	8	2	sdsdvs	sdfsd	t
+16	5	werwe	234234	324234	2021-10-17	2021-10-17 19:56:36.40781+00	7	2	dfds	few	t
+21	5	sdfgsg	345345543	44555	2021-10-30	2021-10-30 13:33:25.737645+00	1	2	dfgdfg	dfgdfh	f
+22	1	fthfh	456456456	55666	2021-10-30	2021-10-30 13:39:32.149191+00	2	2	hfg	fgh	f
+23	2	345ert	44444444	34-435	2021-10-30	2021-10-30 13:40:15.026603+00	2	2	rtyry	ertert	f
+24	2	fghfgh	456476548	56-456	2021-11-02	2021-10-30 13:42:59.017986+00	4	2	767	fghfgh	f
+20	1	Rurka 20	785663945	74500	2021-10-30	2021-10-30 13:44:20.919972+00	4	2	tgrh	Chojna	t
 \.
 
 
@@ -897,6 +904,12 @@ COPY public.charity_good_hands_app_donation_categories (id, donation_id, categor
 7	16	3
 8	12	4
 9	12	5
+14	20	4
+15	21	1
+16	21	4
+17	22	2
+18	23	2
+19	24	4
 \.
 
 
@@ -990,15 +1003,16 @@ COPY public.charity_good_hands_app_institution_categories (id, institution_id, c
 -- Data for Name: charity_good_hands_app_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.charity_good_hands_app_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, year_of_birth) FROM stdin;
-1	admin	\N	t	admin	admin	admin	admin@admin.com	t	t	2021-10-08 17:05:21.022+00	1993
-3	pbkdf2_sha256$260000$rsJSzcHKQTpHi22vO8FBVz$RvWL9qrPXDEldpVZAXiSIYRjNsUqosGE5H5owAIKkGE=	\N	f	dsv@o2.pl	cds		dsv@o2.pl	f	t	2021-10-09 11:47:05.909809+00	\N
-6	pbkdf2_sha256$260000$3rxQ4wXP0m7OPIuneATPvm$4pjvBaYozssCP0NOR2UE0wMukuUPPppmfw7LLGTeMEo=	\N	f	sdfs@asdas.com	sd	sdf	sdfs@asdas.com	f	t	2021-10-09 12:10:50.872485+00	\N
-7	pbkdf2_sha256$260000$CKFHqdcs4ipJwO0DUrRDAa$OLVpj9T3DocUZK2tG8Lf/T6JtA6kvpd73xlSfROJe0w=	2021-10-09 12:38:28.605398+00	f	aaaa@aaa.com	aa	aa	aaaa@aaa.com	f	t	2021-10-09 12:38:19.313199+00	\N
-23	pbkdf2_sha256$260000$deIJtSNHBiFunZOsqLtbAn$ombQMFJ7FnEVGy5Z+mVtjbeNE0sXt8jUlxarkc/mi38=	2021-10-10 17:52:55.734461+00	t	it_jacek@jacek.com	it_jacek	it_jacek	it_jacek@jacek.com	t	t	2021-10-10 17:50:56+00	4
-8	pbkdf2_sha256$260000$E9gebZy9B6ogl1ObZiULj4$Z+vSynSLqfognbnuw+3ktgjdgo5EMZdPbqf3Wwyb00Q=	2021-10-09 15:59:04.49013+00	f					f	t	2021-10-09 15:59:00.646787+00	\N
-21	pbkdf2_sha256$260000$2TCAkuYz5iEyhPrPaab9Ge$df6VdeRbxEZKelWKOIw0lY0g6cC2923Q3ONmbItjGwM=	2021-10-10 18:30:03.641798+00	t	root@root.com	Root		root@root.com	t	t	2021-10-10 15:40:04.764533+00	\N
-2	pbkdf2_sha256$260000$VWq4yh9JfPR0XVWrQ3GhXN$JfwPUmXPUcVhZMnTlB0gDQcNOnFVOkJU0Lx4RlyVL8Q=	2021-10-10 18:33:16.897017+00	f	jacek@jacek.com	Jacek	Rogowski	jacek@jacek.com	f	t	2021-10-09 11:46:28.781125+00	\N
+COPY public.charity_good_hands_app_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, year_of_birth, is_email_verified) FROM stdin;
+1	admin	\N	t	admin	admin	admin	admin@admin.com	t	t	2021-10-08 17:05:21.022+00	1993	f
+3	pbkdf2_sha256$260000$rsJSzcHKQTpHi22vO8FBVz$RvWL9qrPXDEldpVZAXiSIYRjNsUqosGE5H5owAIKkGE=	\N	f	dsv@o2.pl	cds		dsv@o2.pl	f	t	2021-10-09 11:47:05.909809+00	\N	f
+6	pbkdf2_sha256$260000$3rxQ4wXP0m7OPIuneATPvm$4pjvBaYozssCP0NOR2UE0wMukuUPPppmfw7LLGTeMEo=	\N	f	sdfs@asdas.com	sd	sdf	sdfs@asdas.com	f	t	2021-10-09 12:10:50.872485+00	\N	f
+7	pbkdf2_sha256$260000$CKFHqdcs4ipJwO0DUrRDAa$OLVpj9T3DocUZK2tG8Lf/T6JtA6kvpd73xlSfROJe0w=	2021-10-09 12:38:28.605398+00	f	aaaa@aaa.com	aa	aa	aaaa@aaa.com	f	t	2021-10-09 12:38:19.313199+00	\N	f
+23	pbkdf2_sha256$260000$deIJtSNHBiFunZOsqLtbAn$ombQMFJ7FnEVGy5Z+mVtjbeNE0sXt8jUlxarkc/mi38=	2021-10-10 17:52:55.734461+00	t	it_jacek@jacek.com	it_jacek	it_jacek	it_jacek@jacek.com	t	t	2021-10-10 17:50:56+00	4	f
+21	pbkdf2_sha256$260000$2TCAkuYz5iEyhPrPaab9Ge$df6VdeRbxEZKelWKOIw0lY0g6cC2923Q3ONmbItjGwM=	2021-10-10 18:30:03.641798+00	t	root@root.com	Root		root@root.com	t	t	2021-10-10 15:40:04.764533+00	\N	f
+25	pbkdf2_sha256$260000$ZKtijNEcRTQ3FRvkz4ChZu$vWe5wnXcBMdxM2vICSNefRZ4OAcV2iyQNt8ElKy2BCU=	\N	f	dfgdfg@o2.pl	gggg	gfdgdf	dfgdfg@o2.pl	f	f	2021-10-30 13:46:02.142165+00	\N	f
+2	pbkdf2_sha256$260000$1M3Badr2ViyVXODCoH7wIY$HCAKu5u9ahg5FfI8Sbf4NXOHRXK6prVFQOsYK92O8Q4=	2021-10-30 13:32:06.59047+00	f	jacek@jacek.com	Ja CEK	Rogo	jacek@jacek.com	f	t	2021-10-09 11:46:28.781125+00	1111	t
+8	pbkdf2_sha256$260000$1M3Badr2ViyVXODCoH7wIY$HCAKu5u9ahg5FfI8Sbf4NXOHRXK6prVFQOsYK92O8Q4=	2021-10-09 15:59:04.49013+00	t	rogalowski@gmail.com	Jacek	Rogowski	rogalowski@gmail.com	t	t	2021-10-09 15:59:00.646787+00	1	t
 \.
 
 
@@ -1085,6 +1099,10 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 20	charity_good_hands_app	0002_alter_institution_type	2021-10-08 14:55:07.30461+00
 21	charity_good_hands_app	0003_auto_20211008_1905	2021-10-08 19:05:49.162271+00
 22	charity_good_hands_app	0004_donation_city	2021-10-10 14:23:46.684318+00
+23	charity_good_hands_app	0005_auto_20211017_1844	2021-10-17 18:44:45.254234+00
+25	charity_good_hands_app	0006_user_is_email_verified	2021-10-30 13:24:43.144583+00
+26	charity_good_hands_app	0007_alter_donation_zip_code	2021-10-30 13:24:43.17094+00
+27	charity_good_hands_app	0008_alter_donation_pick_up_date	2021-10-30 13:42:04.438092+00
 \.
 
 
@@ -1094,6 +1112,8 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 wb9p28tis2udisx4hljtpyt0ba8ur7c6	.eJxVjEEOwiAQAP_C2ZBCod316N03kAUWqRpISnsy_l1JetDrzGRewtG-Zbc3Xt0SxVlocfplnsKDSxfxTuVWZahlWxcveyIP2-S1Rn5ejvZvkKnlvgU1Gh7iTIgJfCALRCOokIgxzUyDRxwnZK1Igf0W2hjQliAFHScW7w_wWjhD:1mZddM:gS1LKB2LPG3rqcKe3Llgpny6Y0elRjMLc1-aT_ZGJME	2021-10-24 18:33:16.898839+00
+niiyfucsqhkxr8xcfvm7r9st7wrmb2dz	.eJxVjMsOwiAQRf-FtSHDtDzq0r3fQBgYpGogKe3K-O_apAvd3nPOfQkftrX4rfPi5yTOAsXpd6MQH1x3kO6h3pqMra7LTHJX5EG7vLbEz8vh_h2U0Mu3tqycNtmBQ6NJDQAuKxXsqBAmRGCYhkTaEKKJo2HIaK3GiNnRAGTF-wOecjZB:1mc7wW:yJ5JeTP2vh-sLTWTstDUB3KTSaAd9nX9lH8amnjO-WQ	2021-10-31 15:19:20.823564+00
+g25j3fzc0t0xhcun68l4duz3d91dool6	.eJxVjMsOwiAQRf-FtSHDtDzq0r3fQBgYpGogKe3K-O_apAvd3nPOfQkftrX4rfPi5yTOAsXpd6MQH1x3kO6h3pqMra7LTHJX5EG7vLbEz8vh_h2U0Mu3tqycNtmBQ6NJDQAuKxXsqBAmRGCYhkTaEKKJo2HIaK3GiNnRAGTF-wOecjZB:1mgoSs:LLvk4mzdVoJL5JpnxzQiTtXjj8qvCjLpoiKupN8I4fA	2021-11-13 13:32:06.592265+00
 \.
 
 
@@ -1129,14 +1149,14 @@ SELECT pg_catalog.setval('public.charity_good_hands_app_category_id_seq', 6, tru
 -- Name: charity_good_hands_app_donation_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.charity_good_hands_app_donation_categories_id_seq', 9, true);
+SELECT pg_catalog.setval('public.charity_good_hands_app_donation_categories_id_seq', 19, true);
 
 
 --
 -- Name: charity_good_hands_app_donation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.charity_good_hands_app_donation_id_seq', 16, true);
+SELECT pg_catalog.setval('public.charity_good_hands_app_donation_id_seq', 24, true);
 
 
 --
@@ -1164,7 +1184,7 @@ SELECT pg_catalog.setval('public.charity_good_hands_app_user_groups_id_seq', 1, 
 -- Name: charity_good_hands_app_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.charity_good_hands_app_user_id_seq', 23, true);
+SELECT pg_catalog.setval('public.charity_good_hands_app_user_id_seq', 25, true);
 
 
 --
@@ -1192,7 +1212,7 @@ SELECT pg_catalog.setval('public.django_content_type_id_seq', 9, true);
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 22, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 27, true);
 
 
 --

@@ -75,6 +75,43 @@ class LandingPageView(View):
         }
         return render(request, 'index.html', context)
 
+    def post(self, request):
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        message = request.POST.get('message')
+
+        print("surname: ", surname)
+        print("message: ", message)
+
+
+        email_body = render_to_string('contact_email.html', {
+
+            'name': name,
+            'surname': surname,
+            'message': message,
+
+        })
+        administrators = User.objects.filter(is_superuser=True)
+        admin = User.objects.get(username='rogalowski@gmail.com')
+        email = EmailMessage(
+                subject=f" {name} {surname}  FORMULARZ KONTAKTOWY ODDAM W DOBRE RECE",
+                body=email_body,
+                from_email=settings.EMAIL_FROM_USER,
+                to=admin.email,
+        )
+        # for admin in administrators:
+        #     email = EmailMessage(
+        #         subject=f" {name} {surname}  FORMULARZ KONTAKTOWY ODDAM W DOBRE RECE",
+        #         body=email_body,
+        #         from_email=settings.EMAIL_FROM_USER,
+        #         to=admin.email
+        #     )
+        print("email", email)
+        email.send()
+
+        # messages.add_message(request, messages.SUCCESS, f'Formularz wysłano pomyślnie')
+        return redirect('home_index')
+
 
 class FormConfirmationView(View):
     def get(self, request):
@@ -327,4 +364,44 @@ class RegisterView(View):
 
         send_activation_email(user, request)
         return redirect('login_view')
+
+
+
+
+
+
+class EmailContactView(View):
+    def post(self, request):
+
+        current_site = get_current_site(request)
+
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        message = request.POST.get('message')
+
+        print("surname: ", surname)
+        print("message: ", message)
+
+
+        email_body = render_to_string('auth/activate.html', {
+
+            'name': name,
+            'surname': surname,
+            'message': message,
+
+        })
+        administrators = User.objects.filter(is_superuser=True)
+
+        for admin in administrators:
+            email = EmailMessage(
+                subject=f"FORMULARZ KONTAKTOWY {name} {surname} ",
+                body=email_body,
+                from_email=settings.EMAIL_FROM_USER,
+                to=admin.email
+            )
+            print("email", email)
+            email.send()
+
+        messages.add_message(request, messages.SUCCESS, f'Formularz wysłano pomyślnie')
+        return redirect('home_index')
 

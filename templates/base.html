@@ -88,11 +88,18 @@
             <textarea
               name="message"
               placeholder="Wiadomość"
-              rows="1"
+              rows="8"
             ></textarea>
           </div>
 
           <button class="btn" type="submit">Wyślij</button>
+
+{#                    {% if messages %}#}
+{# <h2 style="color: green">#}
+{#    {% for message in messages %}  {{ message }}   {% endfor %}#}
+{#</h2>#}
+{##}
+{#{% endif %}#}
         </form>
       </div>
       <div class="bottom-line">
