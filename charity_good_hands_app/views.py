@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
 from django.db.models import Sum
 from django.shortcuts import render, redirect
@@ -76,6 +77,9 @@ class LandingPageView(View):
         return render(request, 'index.html', context)
 
     def post(self, request):
+
+        current_site = get_current_site(request)
+
         name = request.POST.get('name')
         surname = request.POST.get('surname')
         message = request.POST.get('message')
@@ -84,32 +88,31 @@ class LandingPageView(View):
         print("message: ", message)
 
 
-        email_body = render_to_string('contact_email.html', {
+        email_body = render_to_string('auth/activate.html', {
 
             'name': name,
             'surname': surname,
             'message': message,
 
         })
-        administrators = User.objects.filter(is_superuser=True)
-        admin = User.objects.get(username='rogalowski@gmail.com')
-        email = EmailMessage(
-                subject=f" {name} {surname}  FORMULARZ KONTAKTOWY ODDAM W DOBRE RECE",
-                body=email_body,
-                from_email=settings.EMAIL_FROM_USER,
-                to=admin.email,
-        )
-        # for admin in administrators:
-        #     email = EmailMessage(
-        #         subject=f" {name} {surname}  FORMULARZ KONTAKTOWY ODDAM W DOBRE RECE",
-        #         body=email_body,
-        #         from_email=settings.EMAIL_FROM_USER,
-        #         to=admin.email
-        #     )
-        print("email", email)
-        email.send()
+        # administrators = User.objects.filter(is_superuser=True)
+        administrators = User.objects.filter(username='rogalowski@gmail.com')
 
-        # messages.add_message(request, messages.SUCCESS, f'Formularz wysłano pomyślnie')
+        # for admin in administrators:
+        email = EmailMessage(
+            subject=f"FORMULARZ KONTAKTOWY {name} {surname} ",
+            body=email_body,
+            from_email=settings.EMAIL_FROM_USER,
+            to=[administrators.email]
+        )
+        print("email", email)
+        email.send(request)
+        print("Hura")
+        print("Hura ", surname)
+        print("Hura ", message)
+
+
+        messages.add_message(request, messages.ERROR, f'Formularz wysłano pomyślnie')
         return redirect('home_index')
  
 
@@ -146,6 +149,7 @@ class AddDonationView(LoginRequiredMixin, View):
         pick_up_comment = request.POST.get('more_info')
         categories = request.POST.getlist('categories')
         print("Categories: ", categories)
+        # print("institution: ", institution)
         print("address: ", address)
         print("city: ", city)
         print("zip_code: ", zip_code)
@@ -248,7 +252,6 @@ class UserSettingsEditView(LoginRequiredMixin, View):
             else:
                 messages.add_message(request, messages.ERROR, f'Podane hasła nie pasują, spróbuj jeszcze raz!')
                 return redirect('user_settings')
-            print("Hura")
 
             try:
 
@@ -331,7 +334,7 @@ def activate_user(request, uidb64, token):
     messages.add_message(request, messages.ERROR, f'Użytkownik źle zweryfikowany, prawdopodobnie aktywny!')
     return redirect('register_view')
 
-
+from django.contrib.auth.password_validation import NumericPasswordValidator
 class RegisterView(View):
     def get(self, request):
         return render(request, 'register.html')
@@ -348,6 +351,11 @@ class RegisterView(View):
         else:
             messages.add_message(request, messages.ERROR, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
             return render(request, 'register.html')
+        # try :
+        #     np = NumericPasswordValidator()
+        #     np.validate(password)
+        # except ValidationError
+        #     messages.add_message()
 
         try:
             user = User.objects.create(
@@ -392,16 +400,20 @@ class EmailContactView(View):
         })
         administrators = User.objects.filter(is_superuser=True)
 
-        for admin in administrators:
-            email = EmailMessage(
-                subject=f"FORMULARZ KONTAKTOWY {name} {surname} ",
-                body=email_body,
-                from_email=settings.EMAIL_FROM_USER,
-                to=admin.email
-            )
-            print("email", email)
-            email.send()
+        # for admin in administrators:
+        email = EmailMessage(
+            subject=f"FORMULARZ KONTAKTOWY {name} {surname} ",
+            body=email_body,
+            from_email=settings.EMAIL_FROM_USER,
+            to=[administrators.email]
+        )
+        print("email", email)
+        email.send(request)
+        print("Hura")
+        print("Hura ", surname)
+        print("Hura ", message)
 
-        messages.add_message(request, messages.SUCCESS, f'Formularz wysłano pomyślnie')
+
+        messages.add_message(request, messages.ERROR, f'Formularz wysłano pomyślnie')
         return redirect('home_index')
 
