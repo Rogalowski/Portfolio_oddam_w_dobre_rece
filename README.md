@@ -20,7 +20,21 @@
 <h1 align="center"> Portfolio oddam w dobre ręce </h1>
 
 
-The project in which everyone will be able to give unnecessary things with trusted institutions.
+The project in which everyone will be able to give unnecessary things with trusted institutions. SCRUM and Agile methodology.
 
 Mokup model:
 https://cng9kl.axshare.com/#g=1&p=ekran_g__wny
+
+
+Opis projektu
+Pani Maria Iksińska napisała książkę kucharską, która stała się bestsellerem na rynku książek kucharskich w Polsce i zwróciła się do nas z prośba o przygotowanie dla jej czytelników aplikacji do planowania posiłków. Książka Pani Iksińskiej promuje zdrowe odżywianie i podkreśla jak ważną rolę odgrywa w nim planowanie posiłków. Chce zacząć przeprowadzać w całym kraju warsztaty, na których będzie uczyć uczestników planowania posiłków.
+
+Pani Maria chce rozwijać swój biznes, a do zrealizowania swoich celów potrzebuje strony-wizytówki oraz prostej aplikacji do planowania posiłków.
+
+Plan tego repozytorium
+scrumlab – katalog z projektem Django. Znajdują się w nim pliki
+settings.py – ustawienia projektu,
+urls.py – dane URL-i,
+local_settings.py.example – ustawienia lokalne; po szczegóły zajrzyj do rozdziału Konfiguracja projektu,
+jedzonko – katalog aplikacji Django, nad którą będziesz pracował.
+static – katalog z plikami statycznymi; po szczegóły zajrzyj do rozdziału Konfiguracja projektu
