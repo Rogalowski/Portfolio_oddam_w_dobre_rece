@@ -25,6 +25,8 @@ The project in which everyone will be able to give unnecessary things with trust
 Mokup model:
 https://cng9kl.axshare.com/#g=1&p=ekran_g__wny
 
+Trello project: 
+https://trello.com/b/PjqfDNDw/jacek-rogowski-portfolio-lab
 
 Opis projektu
 Pani Maria Iksińska napisała książkę kucharską, która stała się bestsellerem na rynku książek kucharskich w Polsce i zwróciła się do nas z prośba o przygotowanie dla jej czytelników aplikacji do planowania posiłków. Książka Pani Iksińskiej promuje zdrowe odżywianie i podkreśla jak ważną rolę odgrywa w nim planowanie posiłków. Chce zacząć przeprowadzać w całym kraju warsztaty, na których będzie uczyć uczestników planowania posiłków.
