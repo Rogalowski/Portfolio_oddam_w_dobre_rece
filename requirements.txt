@@ -28,6 +28,7 @@ distro-info===0.23ubuntu1
 dj-database-url==0.5.0
 Django==3.2.14
 django-dotenv==1.4.2
+django-utils-six==2.0
 dnspython==1.16.0
 docker==4.1.0
 docker-compose==1.25.0

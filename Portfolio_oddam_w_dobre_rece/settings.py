@@ -21,14 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=36$47h=g+_*686&k102$!k)lb&=$m+ot_2rg)*z#n(dy&q806'
-
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+ALLOWED_HOSTS = ["127.0.0.1"]
+DEBUG = str(os.environ.get('DEBUG')) == "1"
 
-ALLOWED_HOSTS = []
-
-
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # static ROOT import
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    ALLOWED_HOSTS += [os.environ.get('ALLOWED_HOSTS')]
 # Application definition
 
 INSTALLED_APPS = [
@@ -58,8 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'DIRS': [BASE_DIR / 'charity_good_hands_app/templates']
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,12 +82,12 @@ WSGI_APPLICATION = 'Portfolio_oddam_w_dobre_rece.wsgi.application'
 
 DATABASES = {
     'default': {
-        'HOST': '127.0.0.1',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'charity_donation',
-        'USER': 'postgres',
-        'PASSWORD': 'coderslab',
-        'PORT': 5431,
+        'HOST':  os.getenv('POSTGRES_DB_HOST'),
+        'NAME':  os.getenv('POSTGRES_DB'),  # 'bookstore',
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'PORT': os.getenv('POSTGRES_PORT'),
     }
 }
 
@@ -134,9 +136,8 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"), #static ROOT import
+    os.path.join(BASE_DIR, "static"),  # static ROOT import
 ]
 
 AUTH_USER_MODEL = "charity_good_hands_app.User"

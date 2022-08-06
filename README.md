@@ -41,5 +41,3 @@ https://stackoverflow.com/questions/59709646/django-smart-selects-on-django-vers
 
 Account test:
 jacek@jacek.com jacek
-
-> > > > > > > CouldHave/ContactEmailForm
