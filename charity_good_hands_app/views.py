@@ -1,3 +1,4 @@
+from django.contrib.auth.password_validation import NumericPasswordValidator
 import random
 
 
@@ -28,7 +29,8 @@ from charity_good_hands_app.models import Donation, Institution, User, Category
 class LandingPageView(View):
     def get(self, request):
 
-        bag_quantity = Donation.objects.all().aggregate(Sum('quantity'))['quantity__sum']
+        bag_quantity = Donation.objects.all().aggregate(
+            Sum('quantity'))['quantity__sum']
         institution_quantity = Donation.objects.all().annotate(Sum('institution'))
 
         institution = Institution.objects.filter(type=1)
@@ -87,7 +89,6 @@ class LandingPageView(View):
         print("surname: ", surname)
         print("message: ", message)
 
-
         email_body = render_to_string('auth/activate.html', {
 
             'name': name,
@@ -111,10 +112,10 @@ class LandingPageView(View):
         print("Hura ", surname)
         print("Hura ", message)
 
-
-        messages.add_message(request, messages.ERROR, f'Formularz wysłano pomyślnie')
+        messages.add_message(request, messages.ERROR,
+                             f'Formularz wysłano pomyślnie')
         return redirect('home_index')
- 
+
 
 class FormConfirmationView(View):
     def get(self, request):
@@ -172,7 +173,8 @@ class AddDonationView(LoginRequiredMixin, View):
             new_donation.categories.set(categories)
 
         except:
-            messages.add_message(request, messages.INFO, f'Ups, coś poszło nie tak - nie zapisałem do bazy danych')
+            messages.add_message(
+                request, messages.INFO, f'Ups, coś poszło nie tak - nie zapisałem do bazy danych')
             return redirect('register_view')
 
         return redirect('form_confirmation')
@@ -198,7 +200,8 @@ class LoginView(View):
             return redirect('home_index')
         else:
             # MESSAGE AFTER DELETE ROOM FROM DATABASE IN MAIN MENU
-            messages.add_message(request, messages.INFO, f'Użytkownik nie istnieje lub nie aktywowany, zarejestruj się!')
+            messages.add_message(
+                request, messages.INFO, f'Użytkownik nie istnieje lub nie aktywowany - sprawdź maila, zarejestruj się!')
             return redirect('register_view')
             # return render(request, 'register.html', context)
 
@@ -210,11 +213,11 @@ class LogoutView(View):
         return redirect('home_index')
 
 
-
 class UserDetailsView(LoginRequiredMixin, View):
     def get(self, request):
         logged_user = User.objects.get(username=request.user.username)
-        donations = Donation.objects.filter(user=logged_user).order_by('-is_taken').order_by('-pick_up_date')
+        donations = Donation.objects.filter(user=logged_user).order_by(
+            '-is_taken').order_by('-pick_up_date')
 
         context = {
             'logged_user': logged_user,
@@ -250,7 +253,8 @@ class UserSettingsEditView(LoginRequiredMixin, View):
                 # if check_password(password2, password):
                 password2 = make_password(password)
             else:
-                messages.add_message(request, messages.ERROR, f'Podane hasła nie pasują, spróbuj jeszcze raz!')
+                messages.add_message(
+                    request, messages.ERROR, f'Podane hasła nie pasują, spróbuj jeszcze raz!')
                 return redirect('user_settings')
 
             try:
@@ -280,13 +284,15 @@ class UserSettingsEditView(LoginRequiredMixin, View):
                     user_update.password = password2
                     user_update.save()
             except:
-                messages.add_message(request, messages.ERROR, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
+                messages.add_message(
+                    request, messages.ERROR, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
                 # return render(request, 'register.html')
                 return redirect('user_settings')
             return redirect('login_view')
 
         else:
-            messages.add_message(request, messages.ERROR, f'Podane stare hasło nie pasuje, spróbuj jeszcze raz!')
+            messages.add_message(
+                request, messages.ERROR, f'Podane stare hasło nie pasuje, spróbuj jeszcze raz!')
             return redirect('user_settings')
 
 
@@ -322,19 +328,20 @@ def activate_user(request, uidb64, token):
     uid = force_text(urlsafe_base64_decode(uidb64))
     user = User.objects.get(pk=uid)
 
-
     if user and account_activation_token.check_token(user, token):
         user.is_email_verified = True
         user.is_active = True
         user.save()
 
-        messages.add_message(request, messages.ERROR, 'Email zweryfikowany poprawnie, możesz się zalogować :)')
+        messages.add_message(
+            request, messages.ERROR, 'Email zweryfikowany poprawnie, możesz się zalogować :)')
         return redirect('login_view')
 
-    messages.add_message(request, messages.ERROR, f'Użytkownik źle zweryfikowany, prawdopodobnie aktywny!')
+    messages.add_message(request, messages.ERROR,
+                         f'Użytkownik źle zweryfikowany, prawdopodobnie aktywny!')
     return redirect('register_view')
 
-from django.contrib.auth.password_validation import NumericPasswordValidator
+
 class RegisterView(View):
     def get(self, request):
         return render(request, 'register.html')
@@ -349,7 +356,8 @@ class RegisterView(View):
         if password == password2:
             password2 = make_password(password)
         else:
-            messages.add_message(request, messages.ERROR, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
+            messages.add_message(
+                request, messages.ERROR, f'Podane hasła różnią się od siebie, spróbuj jeszcze raz!')
             return render(request, 'register.html')
         # try :
         #     np = NumericPasswordValidator()
@@ -367,15 +375,12 @@ class RegisterView(View):
                 is_active=False,
             )
         except:
-            messages.add_message(request, messages.ERROR, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
+            messages.add_message(
+                request, messages.ERROR, f'Użytkownik już istnieje, spróbuj jeszcze raz!')
             return render(request, 'register.html')
 
         send_activation_email(user, request)
         return redirect('login_view')
-
-
-
-
 
 
 class EmailContactView(View):
@@ -389,7 +394,6 @@ class EmailContactView(View):
 
         print("surname: ", surname)
         print("message: ", message)
-
 
         email_body = render_to_string('auth/activate.html', {
 
@@ -413,7 +417,6 @@ class EmailContactView(View):
         print("Hura ", surname)
         print("Hura ", message)
 
-
-        messages.add_message(request, messages.ERROR, f'Formularz wysłano pomyślnie')
+        messages.add_message(request, messages.ERROR,
+                             f'Formularz wysłano pomyślnie')
         return redirect('home_index')
-

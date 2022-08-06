@@ -147,10 +147,18 @@ LOGIN_REDIRECT_URL = 'add_donation_view'
 LOGOUT_REDIRECT_URL = 'home_index'
 
 # //Should be included in .env
+# EMAIL_BACKEND = os.getenv('EMAIL_BACKEND ')
+# EMAIL_HOST = os.getenv('EMAIL_HOST')
+# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+# EMAIL_FROM_USER = os.getenv('EMAIL_FROM_USER')
+# EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'informatyka3am@gmail.com'
 EMAIL_FROM_USER = 'informatyka3am@gmail.com'
 # EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = 'informatyka'
+EMAIL_HOST_PASSWORD = 'cgouqfvdtzzodyhg'
 EMAIL_PORT = 587
