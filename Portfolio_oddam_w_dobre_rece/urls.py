@@ -21,7 +21,7 @@ from django.conf import settings  # static ROOT import
 
 
 from charity_good_hands_app.views import LandingPageView, AddDonationView, LoginView, RegisterView, LogoutView, \
-    FormConfirmationView, UserDetailsView, UserSettingsEditView, TakenDonationButton, activate_user
+    FormConfirmationView, UserDetailsView, UserSettingsEditView, TakenDonationButton, activate_user, EmailContactView
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin_panel"),
