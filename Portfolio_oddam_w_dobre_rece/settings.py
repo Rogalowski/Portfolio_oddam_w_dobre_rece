@@ -84,7 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST':  os.getenv('POSTGRES_DB_HOST'),
-        'NAME':  os.getenv('POSTGRES_DB'),  # 'bookstore',
+        'NAME':  os.getenv('POSTGRES_DB'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
         'PORT': os.getenv('POSTGRES_PORT'),
@@ -136,9 +136,11 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),  # static ROOT import
-]
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # static ROOT import
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    ALLOWED_HOSTS += [os.environ.get('ALLOWED_HOSTS')]
 
 AUTH_USER_MODEL = "charity_good_hands_app.User"
 
