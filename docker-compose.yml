@@ -31,7 +31,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "20157:20157"
+      - "30157:30157"
     command: >
       sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:20157 "
 
