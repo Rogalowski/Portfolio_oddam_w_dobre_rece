@@ -7,9 +7,9 @@ services:
     container_name: postgres_data
     ports:
       # - "5431:5432"
-      - "5436:5432"
+      - "5436:5433"
     networks:
-      - database-net
+      - database-net-donation
       # environment:
       # - POSTGRES_DB=${POSTGRES_DB_NAME}
       # - POSTGRES_USER=${POSTGRES_USER}
@@ -33,7 +33,7 @@ services:
     ports:
       - "30157:30157"
     command: >
-      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:20157 "
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:30157 "
 
     # docker exec -i postgres_db psql -U postgres -d postgres < dump_11-09-2021_19_03_34.sql
     # python manage.py collectstatic --noinput &&
@@ -44,12 +44,12 @@ services:
     # links:
     #   - database:database
     networks:
-      - database-net
+      - database-net-donation
     volumes:
       - vol_data:/vol/web/
 
 networks:
-  database-net:
+  database-net-donation:
 volumes:
   vol_data:
 
