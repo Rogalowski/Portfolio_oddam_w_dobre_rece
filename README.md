@@ -15,6 +15,11 @@
 
 <h1 align="center"> Portfolio oddam w dobre ręce </h1>
 
+# Basic Overview
+
+Please check published aplication: http://donation.rogalowski.uk:30157/
+Dockerized and placed on mikr.us VPS, Ubuntu 20.04, nginx, gunicorn: https://mikr.us/
+
 The project in which everyone will be able to give unnecessary things with trusted institutions. SCRUM and Agile methodology.
 
 Mokup model:
@@ -42,23 +47,6 @@ https://stackoverflow.com/questions/59709646/django-smart-selects-on-django-vers
 Account test:
 jacek@jacek.com jacek
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ![obraz](https://user-images.githubusercontent.com/68423391/183245969-31c59756-062a-4048-994b-2dadc841d839.png)
 
 ![obraz](https://user-images.githubusercontent.com/68423391/183245990-409ca2d0-5629-4032-b31f-e3f5254185e9.png)
@@ -66,14 +54,10 @@ jacek@jacek.com jacek
 ![obraz](https://user-images.githubusercontent.com/68423391/183246007-f4bbe17e-675f-4f17-9713-df40858a6aa2.png)
 
 ![obraz](https://user-images.githubusercontent.com/68423391/183246019-0808506f-c1cc-4e2f-802c-3338ee57faeb.png)
- 
- ![obraz](https://user-images.githubusercontent.com/68423391/183246232-683e7ce9-0f20-4452-a3c8-6f8ae159dee2.png)
+
+![obraz](https://user-images.githubusercontent.com/68423391/183246232-683e7ce9-0f20-4452-a3c8-6f8ae159dee2.png)
 ![obraz](https://user-images.githubusercontent.com/68423391/183246253-a326c875-5834-4a74-9004-c3bba09ceb80.png)
 ![obraz](https://user-images.githubusercontent.com/68423391/183246262-b4340873-8519-4fc7-9959-2efd4e624fb9.png)
 ![obraz](https://user-images.githubusercontent.com/68423391/183246278-bac9ba99-8755-4ef7-8477-39694253d9fd.png)
 
-
-
 ![obraz](https://user-images.githubusercontent.com/68423391/183246055-1960a34e-286b-4df6-beb5-c815ebf62e8f.png)
-
-
