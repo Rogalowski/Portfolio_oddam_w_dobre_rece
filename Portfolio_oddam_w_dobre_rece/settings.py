@@ -28,10 +28,14 @@ ALLOWED_HOSTS = ["127.0.0.1"]
 DEBUG = str(os.environ.get('DEBUG')) == "1"
 
 if DEBUG:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # static ROOT import
+    # static ROOT import
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     ALLOWED_HOSTS += [os.environ.get('ALLOWED_HOSTS')]
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # staticfiles
 ]
 
 ROOT_URLCONF = 'Portfolio_oddam_w_dobre_rece.urls'
@@ -135,12 +140,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-if DEBUG:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # static ROOT import
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    ALLOWED_HOSTS += [os.environ.get('ALLOWED_HOSTS')]
 
 AUTH_USER_MODEL = "charity_good_hands_app.User"
 
