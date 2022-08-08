@@ -310,6 +310,7 @@ def send_activation_email(user, request):
 
     email_body = render_to_string('auth/activate.html', {
         'user': user,
+        # 'domain': 'donation.rogalowski.uk:30157',
         'domain': current_site,
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': account_activation_token.make_token(user),

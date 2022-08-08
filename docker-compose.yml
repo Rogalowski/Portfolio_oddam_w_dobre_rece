@@ -33,9 +33,9 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "30157:8001"
+      - "30157:8000"
     command: >
-      sh -c " python manage.py migrate && gunicorn Portfolio_oddam_w_dobre_rece.wsgi:application --bind 0.0.0.0:8001"
+      sh -c " python manage.py migrate && gunicorn Portfolio_oddam_w_dobre_rece.wsgi:application --bind 0.0.0.0:8000"
     # >
     # sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:30157 "
 
