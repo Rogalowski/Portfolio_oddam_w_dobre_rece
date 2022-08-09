@@ -41,6 +41,9 @@ local_settings.py.example – ustawienia lokalne; po szczegóły zajrzyj do rozd
 jedzonko – katalog aplikacji Django, nad którą będziesz pracował.
 static – katalog z plikami statycznymi; po szczegóły zajrzyj do rozdziału Konfiguracja projektu
 
+Cloudflare available ports:
+https://developers.cloudflare.com/fundamentals/get-started/reference/network-ports/?fbclid=IwAR3no5dQoyh_2uYQ6O3FEljVgleIEZFGtnfPtkGA2vOfGZHe4mQ9_LLuyW4
+
 If Problems with six import:
 https://stackoverflow.com/questions/59709646/django-smart-selects-on-django-version-3-0-1-error-importerror-cannot-import/59710132#59710132
 
