@@ -17,7 +17,7 @@
 
 # Basic Overview
 
-Please check published aplication: http://donation.rogalowski.uk:30157/
+Please check published aplication: http://donation.rogalowski.uk:2052/
 Dockerized and placed on mikr.us VPS, Ubuntu 20.04, nginx, gunicorn: https://mikr.us/
 
 The project in which everyone will be able to give unnecessary things with trusted institutions. SCRUM and Agile methodology.
